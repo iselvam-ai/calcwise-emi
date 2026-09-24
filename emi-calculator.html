@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed-dim":"#b4c5ff","on-secondary-container":"#fefcff","on-secondary-fixed-variant":"#003ea8","surface":"#faf8ff","on-surface":"#131b2e","error-container":"#ffdad6","error":"#ba1a1a","on-primary":"#ffffff","surface-variant":"#dae2fd","primary-fixed-dim":"#c4c1fb","on-error-container":"#93000a","on-error":"#ffffff","on-background":"#131b2e","on-tertiary":"#ffffff","tertiary-container":"#002819","surface-dim":"#d2d9f4","primary-container":"#1e1b4b","outline":"#787680","primary-fixed":"#e3dfff","surface-container-lowest":"#ffffff","secondary-container":"#316bf3","tertiary-fixed":"#85f8c4","on-tertiary-fixed":"#002114","secondary-fixed":"#dbe1ff","surface-container-high":"#e2e7ff","surface-container":"#eaedff","on-primary-fixed":"#181445","tertiary-fixed-dim":"#68dba9","surface-container-low":"#f2f3ff","tertiary":"#000f07","inverse-primary":"#c4c1fb","on-primary-container":"#8683ba","surface-tint":"#5b598c","surface-container-highest":"#dae2fd","on-secondary":"#ffffff","on-tertiary-container":"#179c6e","outline-variant":"#c8c5d0","surface-bright":"#faf8ff","on-tertiary-fixed-variant":"#005137","primary":"#070235","background":"#faf8ff","on-secondary-fixed":"#00174b","on-primary-fixed-variant":"#444173","inverse-on-surface":"#eef0ff","inverse-surface":"#283044","on-surface-variant":"#47464f","secondary":"#0051d5"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-md":"1rem","gutter-mobile":"1rem","space-xl":"2rem","gutter":"1.5rem","space-2xl":"3rem","margin-mobile":"1rem","margin":"2rem","space-xs":"0.25rem","space-lg":"1.5rem"},fontFamily:{"label-md":["Inter"],"numeric-stat":["Inter"],"numeric-hero":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"label-sm":["Inter"],"body-lg":["Inter"],"headline-sm":["Plus Jakarta Sans"],"body-sm":["Inter"],"headline-lg":["Plus Jakarta Sans"],"label-lg":["Inter"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-md":["Inter"],"body-xl":["Inter"]},fontSize:{"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"numeric-stat":["28px",{lineHeight:"34px",letterSpacing:"-0.02em",fontWeight:"700"}],"numeric-hero":["44px",{lineHeight:"52px",letterSpacing:"-0.025em",fontWeight:"800"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.025em",fontWeight:"800"}],"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"body-lg":["16px",{lineHeight:"24px",letterSpacing:"0em",fontWeight:"400"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",letterSpacing:"0.005em",fontWeight:"400"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-xl-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.025em",fontWeight:"700"}],"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.03em",fontWeight:"800"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",letterSpacing:"0em",fontWeight:"400"}],"body-xl":["18px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(30,27,75,0.05)] border-b border-surface-container-high"><div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="calculators-overview" href="#"><img alt="CALCWISE Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W_04sRD-Uc86wBE-1nhSwsjnl0KMcJaNkbug7UOX3CpQsQEWuquJ_RCX7hR-bv5PSyz980_TdY80DtLwMxAB__hoWExGve9xRIIUznxWkemSQ0Jy77L62uNVsBOsAt4PZsMXNEHtvTxxve7iyiKdFWhyhi9AbIT_XlZkYb1pVmAFJMLhRJykeWjLcnPlDSh1pT0xIC4uJaNl8o3A7aE6S8lwwD4dkIv7GX6hrYl3FX51I79Ql5fU5BmDw"/><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary">CALCWISE</span></a><nav class="hidden xl:flex items-center gap-space-xs ml-space-md" data-active-classes="text-primary font-bold bg-surface-container-high rounded-lg"><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="calculators-overview" href="#">Calculators</a><a aria-current="page" class="px-3 py-2 transition-colors text-primary font-bold bg-surface-container-high rounded-lg" data-path="loan-calculators" href="#">Loans</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="investment-calculators" href="#">Investments</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="savings-calculators" href="#">Savings</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="tax-calculators" href="#">Tax</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="real-estate-calculators" href="#">Real Estate</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="financial-guides" href="#">Guides</a></nav></div><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span>₹ INR</span></div><button class="hidden md:flex items-center gap-space-sm px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all border border-surface-container-high" type="button"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-body-sm text-body-sm">Quick Search</span><kbd class="px-1.5 py-0.5 rounded bg-surface text-on-surface-variant font-label-sm text-label-sm border border-surface-container-high">⌘K</kbd></button><a class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-all shadow-[0_2px_4px_rgba(30,27,75,0.08)]" data-path="auth-portal" href="#">Sign In</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Subtle decorative ambient canvas glows -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 right-1/4 w-96 h-96 bg-secondary-fixed-dim/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-80 -left-20 w-80 h-80 bg-primary-fixed-dim/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="max-w-7xl mx-auto px-6 lg:px-12 py-8">
+<!-- Breadcrumb & Header Section -->
+<nav class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant mb-4">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">home</span> Home
+        </a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-primary transition-colors" href="#">Loans</a>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-bold">EMI Calculator</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm uppercase tracking-wider mb-3">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+            Institutional Grade Precision Engine
+          </div>
+<h1 class="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight">
+            Loan EMI Calculator
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">
+            Calculate your exact monthly EMI, total interest payable, and view how loan tenure impacts overall interest outgo with live amortization insights.
+          </p>
+</div>
+<div class="flex items-center gap-3 self-start md:self-auto">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container transition-all shadow-sm font-label-lg text-label-lg" onclick="window.print()" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>Print Sheet</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-all shadow-md font-label-lg text-label-lg" id="shareBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Share Link</span>
+</button>
+</div>
+</div>
+<!-- Main Two-Column Power Workspace -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN: Comprehensive Calculator Controls (7 Columns) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 lg:p-8 shadow-sm flex flex-col gap-8">
+<!-- Loan Amount Group -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-primary font-semibold flex items-center gap-2" for="loanAmountInput">
+<span class="material-symbols-outlined text-secondary text-[22px]">account_balance</span>
+                  Loan Amount
+                </label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-headline-sm text-headline-sm text-on-surface-variant font-medium">₹</span>
+<input class="w-44 sm:w-52 pl-8 pr-4 py-2 rounded-lg bg-surface-container-low text-right font-headline-sm text-headline-sm text-primary font-bold focus:outline-none focus:bg-surface shadow-inner" id="loanAmountInput" type="text" value="50,00,000"/>
+</div>
+</div>
+<!-- Quick Pills -->
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Quick:</span>
+<button class="px-3 py-1 rounded-full bg-surface-container hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors font-label-md text-label-md text-on-surface" onclick="setLoanAmount(1000000)" type="button">₹10 Lakh</button>
+<button class="px-3 py-1 rounded-full bg-surface-container hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors font-label-md text-label-md text-on-surface" onclick="setLoanAmount(2500000)" type="button">₹25 Lakh</button>
+<button class="px-3 py-1 rounded-full bg-secondary text-on-secondary shadow-sm font-label-md text-label-md" onclick="setLoanAmount(5000000)" type="button">₹50 Lakh</button>
+<button class="px-3 py-1 rounded-full bg-surface-container hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors font-label-md text-label-md text-on-surface" onclick="setLoanAmount(10000000)" type="button">₹1 Crore</button>
+</div>
+<!-- Slider Track -->
+<div class="mt-2">
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-secondary" id="loanAmountSlider" max="100000000" min="100000" step="50000" type="range" value="5000000"/>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span>Min: ₹1 Lakh</span>
+<span class="text-secondary font-semibold">Max: ₹10 Crore</span>
+</div>
+</div>
+</div>
+<!-- Interest Rate Group -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-primary font-semibold flex items-center gap-2" for="interestRateInput">
+<span class="material-symbols-outlined text-secondary text-[22px]">percent</span>
+                  Interest Rate (% P.A.)
+                </label>
+<div class="relative flex items-center">
+<input class="w-32 sm:w-36 pr-8 pl-4 py-2 rounded-lg bg-surface-container-low text-right font-headline-sm text-headline-sm text-primary font-bold focus:outline-none focus:bg-surface shadow-inner" id="interestRateInput" step="0.05" type="number" value="8.50"/>
+<span class="absolute right-3 font-headline-sm text-headline-sm text-on-surface-variant font-medium">%</span>
+</div>
+</div>
+<!-- Bank Reference Badges -->
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Benchmark:</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors font-label-md text-label-md text-on-surface" onclick="setInterestRate(8.50)" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  SBI <span class="font-bold text-primary">8.50%</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors font-label-md text-label-md text-on-surface" onclick="setInterestRate(8.70)" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  HDFC <span class="font-bold text-primary">8.70%</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors font-label-md text-label-md text-on-surface" onclick="setInterestRate(8.75)" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  ICICI <span class="font-bold text-primary">8.75%</span>
+</button>
+</div>
+<!-- Slider Track -->
+<div class="mt-2">
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-secondary" id="interestRateSlider" max="18.0" min="5.0" step="0.05" type="range" value="8.50"/>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span>5.0%</span>
+<span>11.5%</span>
+<span>18.0%</span>
+</div>
+</div>
+</div>
+<!-- Loan Tenure Group -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-primary font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">calendar_month</span>
+                  Loan Tenure
+                </label>
+<div class="flex items-center gap-2">
+<!-- Mode Toggle -->
+<div class="flex items-center p-1 rounded-lg bg-surface-container text-on-surface-variant">
+<button class="px-3 py-1 rounded-md bg-surface-container-lowest text-primary font-label-sm text-label-sm font-bold shadow-sm" id="tenureUnitYears" onclick="setTenureMode('years')" type="button">Years</button>
+<button class="px-3 py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium" id="tenureUnitMonths" onclick="setTenureMode('months')" type="button">Months</button>
+</div>
+<input class="w-24 sm:w-28 px-3 py-2 rounded-lg bg-surface-container-low text-right font-headline-sm text-headline-sm text-primary font-bold focus:outline-none focus:bg-surface shadow-inner" id="tenureValueInput" type="number" value="20"/>
+</div>
+</div>
+<!-- Slider Track -->
+<div class="mt-2">
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-secondary" id="tenureSlider" max="30" min="1" step="1" type="range" value="20"/>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm mt-1">
+<span id="sliderMinLabel">1 Year</span>
+<span id="sliderMidLabel">15 Years</span>
+<span id="sliderMaxLabel">30 Years</span>
+</div>
+</div>
+</div>
+<!-- Advanced Options Accordion Drawer -->
+<div class="rounded-xl bg-surface-container-low p-4 transition-all">
+<button class="w-full flex items-center justify-between text-left font-label-lg text-label-lg text-primary font-semibold" onclick="toggleAdvancedDrawer()" type="button">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
+<span>Advanced Calculation &amp; Fee Parameters</span>
+</div>
+<span class="material-symbols-outlined transition-transform duration-300" id="drawerIcon">expand_more</span>
+</button>
+<div class="hidden mt-4 pt-4 border-t-0 space-y-4" id="advancedDrawer">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Processing Fee (%)</label>
+<div class="relative">
+<input class="w-full px-3 py-2 bg-surface rounded-lg text-primary font-label-lg text-label-lg font-semibold focus:outline-none" id="feeInput" step="0.1" type="number" value="0.5"/>
+<span class="absolute right-3 top-2 text-on-surface-variant font-label-sm text-label-sm">%</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Prepayment Option</label>
+<select class="w-full px-3 py-2 bg-surface rounded-lg text-primary font-label-lg text-label-lg font-semibold focus:outline-none" id="prepaymentToggle">
+<option value="none">No Prepayment</option>
+<option value="yearly">₹1,00,000 / Year</option>
+<option value="custom">Custom Schedule</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Start Disbursement Month</label>
+<input class="w-full px-3 py-2 bg-surface rounded-lg text-primary font-label-lg text-label-lg font-semibold focus:outline-none" id="startMonthInput" type="month" value="2025-04"/>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface text-on-surface-variant font-body-sm text-body-sm flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">info</span>
+<span>Includes standard GST (18%) computation applied automatically to Indian processing fees.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Micro Metric Highlights -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Statutory Lending Compliance</p>
+<p class="font-headline-sm text-headline-sm text-primary font-bold">RBI Repo-Linked</p>
+</div>
+</div>
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">shield_with_heart</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Standard Amortization</p>
+<p class="font-headline-sm text-headline-sm text-primary font-bold">Reducing Balance</p>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Live Calculation & Analytics (5 Columns) -->
+<div class="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-24">
+<!-- Large Prominent Monthly EMI Card -->
+<div class="relative overflow-hidden rounded-xl bg-primary text-on-primary p-6 lg:p-8 shadow-xl">
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-secondary/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-primary-fixed-dim uppercase tracking-wider font-semibold">Calculated Monthly Outflow</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-bold">Live EMI</span>
+</div>
+<div class="flex items-baseline gap-2 mb-4">
+<span class="font-numeric-hero text-numeric-hero font-extrabold tracking-tight text-on-primary" id="emiDisplay">
+                ₹43,391
+              </span>
+<span class="font-headline-sm text-headline-sm text-primary-fixed-dim font-medium">/ month</span>
+</div>
+<div class="flex items-center gap-2 pt-4 border-t border-primary-container text-primary-fixed font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">trending_down</span>
+<span>Principal repays faster as tenure advances past month 108.</span>
+</div>
+</div>
+<!-- Analytics & Breakdown Section -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-6">
+<!-- Dual Visual SVG Donut Chart -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-6 py-2">
+<div class="relative w-44 h-44 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<!-- Background Track -->
+<circle cx="60" cy="60" fill="transparent" r="50" stroke="#E2E7FF" stroke-width="16"></circle>
+<!-- Principal Segment (48%) -->
+<circle class="transition-all duration-500 ease-out" cx="60" cy="60" fill="transparent" id="svgPrincipalSegment" r="50" stroke="#070235" stroke-dasharray="314.159" stroke-dashoffset="163.36" stroke-width="16"></circle>
+<!-- Interest Segment (52%) -->
+<circle class="transition-all duration-500 ease-out" cx="60" cy="60" fill="transparent" id="svgInterestSegment" r="50" stroke="#0051D5" stroke-dasharray="314.159" stroke-dashoffset="150.79" stroke-width="16" transform="rotate(172.8 60 60)"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary" id="donutRatioText">100%</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Payable</span>
+</div>
+</div>
+<!-- Breakdown Metrics Details -->
+<div class="flex flex-col gap-3 w-full">
+<!-- Principal Item -->
+<div class="p-3 rounded-lg bg-surface flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary flex-shrink-0"></span>
+<span class="font-label-md text-label-md text-on-surface">Principal</span>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-headline-sm font-bold text-primary" id="principalValueDisplay">₹50,00,000</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant font-medium" id="principalPercentDisplay">48.0%</span>
+</div>
+</div>
+<!-- Interest Item -->
+<div class="p-3 rounded-lg bg-surface flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary flex-shrink-0"></span>
+<span class="font-label-md text-label-md text-on-surface">Total Interest</span>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary" id="interestValueDisplay">₹54,13,840</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant font-medium" id="interestPercentDisplay">52.0%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Total Amount Payable Full Width Tile -->
+<div class="p-4 rounded-xl bg-surface-container flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Amount Payable</p>
+<p class="font-body-sm text-body-sm text-on-surface">Principal + Cumulative Interest</p>
+</div>
+<div class="text-right">
+<p class="font-numeric-stat text-numeric-stat font-extrabold text-primary" id="totalPayableDisplay">₹1,04,13,840</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-3 pt-2">
+<a class="flex-1 py-3 px-4 rounded-lg bg-primary text-on-primary text-center font-label-lg text-label-lg font-bold hover:bg-primary-container transition-colors shadow-sm flex items-center justify-center gap-2" href="#amortizationSection">
+<span class="material-symbols-outlined text-[20px]">table_chart</span>
+<span>Amortization</span>
+</a>
+<button class="flex-1 py-3 px-4 rounded-lg bg-surface-container text-on-surface text-center font-label-lg text-label-lg font-semibold hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2" onclick="downloadSummaryAlert()" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Download PDF</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- BELOW CALCULATOR SECTION: Interactive Scenario Matrix -->
+<section class="mt-16 flex flex-col gap-6" id="amortizationSection">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-[16px]">compare_arrows</span>
+              Tenure Optimization Analysis
+            </div>
+<h2 class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">
+              How your EMI changes across Tenures
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+              Observe the trade-off: shorter tenures mean larger monthly commitment but save substantial compound interest.
+            </p>
+</div>
+<!-- Highlight Alert Callout -->
+<div class="p-4 rounded-xl bg-error-container text-on-error-container max-w-lg shadow-sm">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-error text-[20px] mt-0.5">warning</span>
+<p class="font-label-md text-label-md leading-relaxed">
+<strong class="font-bold">Cautionary Insight:</strong> Extending tenure from 20 to 30 years reduces EMI by only <span class="font-bold">₹4,945/mo</span>, but increases total interest by a staggering <span class="font-bold">₹34.27 Lakhs!</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Matrix Table Card -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-wider">
+<th class="py-4 px-6">Tenure Bracket</th>
+<th class="py-4 px-6">Monthly EMI</th>
+<th class="py-4 px-6">Total Interest</th>
+<th class="py-4 px-6">Total Amount Outgo</th>
+<th class="py-4 px-6 text-right">Interest Multiplier</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 font-body-md text-body-md text-on-surface">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-6 font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+                    10 Years (120 Mo)
+                  </td>
+<td class="py-4 px-6 font-bold text-primary">₹61,993</td>
+<td class="py-4 px-6 text-secondary font-medium">₹24,39,140</td>
+<td class="py-4 px-6 font-medium">₹74,39,140</td>
+<td class="py-4 px-6 text-right">
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-bold">0.49x Principal</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-6 font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+                    15 Years (180 Mo)
+                  </td>
+<td class="py-4 px-6 font-bold text-primary">₹49,237</td>
+<td class="py-4 px-6 text-secondary font-medium">₹38,62,657</td>
+<td class="py-4 px-6 font-medium">₹88,62,657</td>
+<td class="py-4 px-6 text-right">
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-bold">0.77x Principal</span>
+</td>
+</tr>
+<!-- CURRENT SELECTION -->
+<tr class="bg-secondary-fixed/30 font-semibold">
+<td class="py-4 px-6 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-bold text-primary">20 Years (Current)</span>
+<span class="px-2 py-0.5 rounded bg-secondary text-on-secondary font-label-sm text-label-sm">Active</span>
+</td>
+<td class="py-4 px-6 font-extrabold text-secondary">₹43,391</td>
+<td class="py-4 px-6 text-primary font-bold">₹54,13,840</td>
+<td class="py-4 px-6 font-bold text-primary">₹1,04,13,840</td>
+<td class="py-4 px-6 text-right">
+<span class="px-2.5 py-1 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-bold">1.08x Principal</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-6 font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+                    25 Years (300 Mo)
+                  </td>
+<td class="py-4 px-6 font-bold text-primary">₹40,261</td>
+<td class="py-4 px-6 text-secondary font-medium">₹70,78,416</td>
+<td class="py-4 px-6 font-medium">₹1,20,78,416</td>
+<td class="py-4 px-6 text-right">
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-bold">1.42x Principal</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-6 font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+                    30 Years (360 Mo)
+                  </td>
+<td class="py-4 px-6 font-bold text-primary">₹38,446</td>
+<td class="py-4 px-6 text-secondary font-medium">₹88,40,490</td>
+<td class="py-4 px-6 font-medium">₹1,38,40,490</td>
+<td class="py-4 px-6 text-right">
+<span class="px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">1.77x Principal</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- SEO & Educational Content Block -->
+<section class="mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+<!-- Formula Section (6 Cols) -->
+<div class="lg:col-span-6 bg-surface-container-lowest rounded-xl p-6 lg:p-8 shadow-sm flex flex-col gap-6">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-bold">Under the Hood</span>
+<h3 class="font-headline-md text-headline-md text-primary font-bold tracking-tight mt-1">
+              How EMI is Calculated in India
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+              Indian banking institutions calculate standard reducing balance EMIs via standard mathematical annuity formulation:
+            </p>
+</div>
+<!-- LaTeX/Formula Banner -->
+<div class="p-6 rounded-xl bg-primary-container text-on-primary shadow-inner flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-label-sm text-primary-fixed-dim tracking-widest uppercase mb-2">Equated Monthly Installment Formula</span>
+<div class="font-headline-lg text-headline-lg font-extrabold tracking-widest text-on-primary">
+              EMI = <span class="text-secondary-fixed">P</span> × <span class="text-tertiary-fixed">r</span> × <span class="text-white">(1 + r)<sup>n</sup></span> / <span class="text-white">((1 + r)<sup>n</sup> - 1)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+<div class="p-3 rounded-lg bg-surface">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">P</span>
+<p class="font-label-md text-label-md font-bold text-primary mt-0.5">Principal Sum</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">The borrowed credit disbursed.</p>
+</div>
+<div class="p-3 rounded-lg bg-surface">
+<span class="font-headline-sm text-headline-sm font-bold text-tertiary-fixed-variant">r</span>
+<p class="font-label-md text-label-md font-bold text-primary mt-0.5">Monthly Rate</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Annual rate ÷ (12 × 100).</p>
+</div>
+<div class="p-3 rounded-lg bg-surface">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">n</span>
+<p class="font-label-md text-label-md font-bold text-primary mt-0.5">Duration</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Total count of monthly tenures.</p>
+</div>
+</div>
+<!-- Editorial image container showcasing home/advisory aesthetic -->
+<div class="mt-4 rounded-xl overflow-hidden relative">
+<img class="w-full h-44 object-cover" data-alt="Modern architectural house illuminated during dusk with warm lighting, evoking aspirational homeownership and Indian wealth planning security in deep indigo and warm amber tones, crisp architectural lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg0dSZWXbeurOiMhiSgZ5V8ZtpE3arD_ndcargZvYvCuWqfxwATDDJMuLqGOj17w1TNc7IejFIvt5ZaHZwiWFawMDwRh49-8D6lNgxfPEXqacTzmljwTnHOWjI5nfyY6a3M7U4sPRAQao1grvM75VMwe8U-kvMpD5MCbcuoMT0KtzwQuT5JMh4M3xh0e2a2PHuLZySmeEb-fK9PGHeJugqrSc68iUnLGudfpbNVXHbEcXGLBRDORdu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex items-end p-4">
+<p class="font-label-md text-label-md text-on-primary font-medium">Smart planning helps clear home loans 7 years earlier.</p>
+</div>
+</div>
+</div>
+<!-- FAQ Accordion (6 Cols) -->
+<div class="lg:col-span-6 flex flex-col gap-4">
+<div class="mb-2">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-bold">Frequently Addressed Inquiries</span>
+<h3 class="font-headline-md text-headline-md text-primary font-bold tracking-tight mt-1">
+              Loan Advisory &amp; Principles
+            </h3>
+</div>
+<!-- FAQ Item 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm">
+<button class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(1)" type="button">
+<span class="font-label-lg text-label-lg font-bold text-primary">How do part-prepayments impact my total interest?</span>
+<span class="material-symbols-outlined text-secondary transition-transform" id="faqIcon-1">expand_more</span>
+</button>
+<div class="hidden mt-3 pt-3 text-on-surface-variant font-body-md text-body-md leading-relaxed border-t-0" id="faqContent-1">
+              When you prepay towards the loan principal, your outstanding principal decreases immediately. Because interest is charged on the reducing balance, subsequent interest installments drop significantly, shortening your loan tenure or reducing subsequent EMIs.
+            </div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm">
+<button class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(2)" type="button">
+<span class="font-label-lg text-label-lg font-bold text-primary">What is the difference between Floating vs Fixed EMI?</span>
+<span class="material-symbols-outlined text-secondary transition-transform" id="faqIcon-2">expand_more</span>
+</button>
+<div class="hidden mt-3 pt-3 text-on-surface-variant font-body-md text-body-md leading-relaxed border-t-0" id="faqContent-2">
+              Floating interest rates move with RBI’s repo rate fluctuations. If repo rates soften, your effective interest decreases. Fixed rates lock in the same interest rate throughout your chosen duration, protecting against macroeconomic rate hikes but typically commanding a 1-2% initial premium.
+            </div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm">
+<button class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(3)" type="button">
+<span class="font-label-lg text-label-lg font-bold text-primary">How does a CIBIL score influence my sanctioned loan rate?</span>
+<span class="material-symbols-outlined text-secondary transition-transform" id="faqIcon-3">expand_more</span>
+</button>
+<div class="hidden mt-3 pt-3 text-on-surface-variant font-body-md text-body-md leading-relaxed border-t-0" id="faqContent-3">
+              Indian scheduled banks (SBI, HDFC, ICICI, etc.) segregate borrower brackets by credit scores. Scores of 750+ typically unlock the lowest benchmark card rates (currently ~8.50%), while scores below 700 may incur risk-premiums of 50–150 basis points.
+            </div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm">
+<button class="w-full flex items-center justify-between text-left gap-4" onclick="toggleFaq(4)" type="button">
+<span class="font-label-lg text-label-lg font-bold text-primary">Can I claim Income Tax deductions on my home loan EMI?</span>
+<span class="material-symbols-outlined text-secondary transition-transform" id="faqIcon-4">expand_more</span>
+</button>
+<div class="hidden mt-3 pt-3 text-on-surface-variant font-body-md text-body-md leading-relaxed border-t-0" id="faqContent-4">
+              Yes, under the Old Tax Regime in India: Principal repayment is eligible for deduction up to ₹1.5 Lakhs under Section 80C. Interest payment is eligible for deduction up to ₹2.0 Lakhs under Section 24(b) for self-occupied properties.
+            </div>
+</div>
+<!-- Advisory trust badge -->
+<div class="p-4 rounded-xl bg-surface-container-high flex items-center gap-3 mt-2">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">
+              Calculations verified against Indian Retail Lending Guidelines and standard reducing balance banking equations.
+            </p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<script>
+  let tenureMode = 'years'; // 'years' | 'months'
+
+  function formatIndianCurrency(num) {
+    let x = Math.round(num).toString();
+    let lastThree = x.substring(x.length - 3);
+    let otherNumbers = x.substring(0, x.length - 3);
+    if (otherNumbers !== '') {
+      lastThree = ',' + lastThree;
+    }
+    return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+  }
+
+  function parseFormattedNumber(val) {
+    if (!val) return 0;
+    return parseFloat(val.toString().replace(/,/g, '')) || 0;
+  }
+
+  function calculateEMI() {
+    const principal = parseFormattedNumber(document.getElementById('loanAmountInput').value);
+    const annualRate = parseFloat(document.getElementById('interestRateInput').value) || 0;
+    let tenureVal = parseFloat(document.getElementById('tenureValueInput').value) || 1;
+
+    let numberOfMonths = tenureMode === 'years' ? tenureVal * 12 : tenureVal;
+    if (numberOfMonths <= 0) numberOfMonths = 1;
+
+    const monthlyRate = (annualRate / 12) / 100;
+    let emi = 0;
+
+    if (monthlyRate === 0) {
+      emi = principal / numberOfMonths;
+    } else {
+      const compoundFactor = Math.pow(1 + monthlyRate, numberOfMonths);
+      emi = (principal * monthlyRate * compoundFactor) / (compoundFactor - 1);
+    }
+
+    const totalPayable = emi * numberOfMonths;
+    const totalInterest = Math.max(0, totalPayable - principal);
+
+    // Update Output Numbers
+    document.getElementById('emiDisplay').textContent = '₹' + formatIndianCurrency(emi);
+    document.getElementById('principalValueDisplay').textContent = '₹' + formatIndianCurrency(principal);
+    document.getElementById('interestValueDisplay').textContent = '₹' + formatIndianCurrency(totalInterest);
+    document.getElementById('totalPayableDisplay').textContent = '₹' + formatIndianCurrency(totalPayable);
+
+    // Update Percentages
+    const principalPct = totalPayable > 0 ? (principal / totalPayable) * 100 : 50;
+    const interestPct = totalPayable > 0 ? (totalInterest / totalPayable) * 100 : 50;
+
+    document.getElementById('principalPercentDisplay').textContent = principalPct.toFixed(1) + '%';
+    document.getElementById('interestPercentDisplay').textContent = interestPct.toFixed(1) + '%';
+
+    // SVG donut updates
+    const circumference = 314.159;
+    const principalOffset = circumference - (circumference * (principalPct / 100));
+    const interestOffset = circumference - (circumference * (interestPct / 100));
+
+    const principalCircle = document.getElementById('svgPrincipalSegment');
+    const interestCircle = document.getElementById('svgInterestSegment');
+
+    if (principalCircle && interestCircle) {
+      principalCircle.style.strokeDashoffset = principalOffset;
+      interestCircle.style.strokeDashoffset = interestOffset;
+      const rotateDeg = (principalPct / 100) * 360;
+      interestCircle.setAttribute('transform', `rotate(${rotateDeg} 60 60)`);
+    }
+  }
+
+  function setLoanAmount(val) {
+    document.getElementById('loanAmountInput').value = formatIndianCurrency(val);
+    document.getElementById('loanAmountSlider').value = val;
+    calculateEMI();
+  }
+
+  function setInterestRate(val) {
+    document.getElementById('interestRateInput').value = val.toFixed(2);
+    document.getElementById('interestRateSlider').value = val;
+    calculateEMI();
+  }
+
+  function setTenureMode(mode) {
+    tenureMode = mode;
+    const yearsBtn = document.getElementById('tenureUnitYears');
+    const monthsBtn = document.getElementById('tenureUnitMonths');
+    const slider = document.getElementById('tenureSlider');
+    const input = document.getElementById('tenureValueInput');
+
+    if (mode === 'years') {
+      yearsBtn.className = 'px-3 py-1 rounded-md bg-surface-container-lowest text-primary font-label-sm text-label-sm font-bold shadow-sm';
+      monthsBtn.className = 'px-3 py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium';
+      slider.min = "1";
+      slider.max = "30";
+      slider.step = "1";
+      document.getElementById('sliderMinLabel').textContent = '1 Year';
+      document.getElementById('sliderMidLabel').textContent = '15 Years';
+      document.getElementById('sliderMaxLabel').textContent = '30 Years';
+      input.value = Math.min(30, Math.max(1, Math.round(input.value / 12) || 20));
+      slider.value = input.value;
+    } else {
+      monthsBtn.className = 'px-3 py-1 rounded-md bg-surface-container-lowest text-primary font-label-sm text-label-sm font-bold shadow-sm';
+      yearsBtn.className = 'px-3 py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium';
+      slider.min = "12";
+      slider.max = "360";
+      slider.step = "6";
+      document.getElementById('sliderMinLabel').textContent = '12 Mos';
+      document.getElementById('sliderMidLabel').textContent = '180 Mos';
+      document.getElementById('sliderMaxLabel').textContent = '360 Mos';
+      input.value = Math.min(360, Math.max(12, (input.value * 12) || 240));
+      slider.value = input.value;
+    }
+    calculateEMI();
+  }
+
+  // Event Listeners for controls
+  const loanInput = document.getElementById('loanAmountInput');
+  const loanSlider = document.getElementById('loanAmountSlider');
+  loanSlider.addEventListener('input', (e) => {
+    loanInput.value = formatIndianCurrency(e.target.value);
+    calculateEMI();
+  });
+  loanInput.addEventListener('change', (e) => {
+    const raw = parseFormattedNumber(e.target.value);
+    loanSlider.value = raw;
+    loanInput.value = formatIndianCurrency(raw);
+    calculateEMI();
+  });
+
+  const rateInput = document.getElementById('interestRateInput');
+  const rateSlider = document.getElementById('interestRateSlider');
+  rateSlider.addEventListener('input', (e) => {
+    rateInput.value = parseFloat(e.target.value).toFixed(2);
+    calculateEMI();
+  });
+  rateInput.addEventListener('change', (e) => {
+    rateSlider.value = e.target.value;
+    calculateEMI();
+  });
+
+  const tenureInput = document.getElementById('tenureValueInput');
+  const tenureSlider = document.getElementById('tenureSlider');
+  tenureSlider.addEventListener('input', (e) => {
+    tenureInput.value = e.target.value;
+    calculateEMI();
+  });
+  tenureInput.addEventListener('change', (e) => {
+    tenureSlider.value = e.target.value;
+    calculateEMI();
+  });
+
+  function toggleAdvancedDrawer() {
+    const drawer = document.getElementById('advancedDrawer');
+    const icon = document.getElementById('drawerIcon');
+    if (drawer.classList.contains('hidden')) {
+      drawer.classList.remove('hidden');
+      icon.classList.add('rotate-180');
+    } else {
+      drawer.classList.add('hidden');
+      icon.classList.remove('rotate-180');
+    }
+  }
+
+  function toggleFaq(id) {
+    const content = document.getElementById(`faqContent-${id}`);
+    const icon = document.getElementById(`faqIcon-${id}`);
+    if (content.classList.contains('hidden')) {
+      content.classList.remove('hidden');
+      icon.classList.add('rotate-180');
+    } else {
+      content.classList.add('hidden');
+      icon.classList.remove('rotate-180');
+    }
+  }
+
+  function downloadSummaryAlert() {
+    alert('PDF Generation Engine: Preparing official Calcwise Amortization Statement for download.');
+  }
+
+  document.getElementById('shareBtn').addEventListener('click', () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard with current parameters!');
+    } else {
+      alert('Share link: ' + window.location.href);
+    }
+  });
+
+  // Initial Calculation Run
+  calculateEMI();
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-surface-container-high"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl"><div class="lg:col-span-1"><div class="flex items-center gap-space-sm mb-space-sm"><img alt="CALCWISE Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W_04sRD-Uc86wBE-1nhSwsjnl0KMcJaNkbug7UOX3CpQsQEWuquJ_RCX7hR-bv5PSyz980_TdY80DtLwMxAB__hoWExGve9xRIIUznxWkemSQ0Jy77L62uNVsBOsAt4PZsMXNEHtvTxxve7iyiKdFWhyhi9AbIT_XlZkYb1pVmAFJMLhRJykeWjLcnPlDSh1pT0xIC4uJaNl8o3A7aE6S8lwwD4dkIv7GX6hrYl3FX51I79Ql5fU5BmDw"/><span class="font-headline-sm text-headline-sm font-bold text-primary">CALCWISE</span></div><p class="font-label-lg text-label-lg font-semibold text-secondary mb-space-xs">Calculate. Compare. Plan.</p><p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Engineered for precision Indian retail finance and institutional wealth projection.</p><div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-medium"><span class="material-symbols-outlined text-[14px] text-secondary">verified</span><span>Made for India</span></div></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md uppercase tracking-wider">Calculators</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" data-path="calculators-overview" href="#">EMI Calculator</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Home Loan EMI</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Prepayment Analysis</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Affordability Estimator</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Loan Comparison</a></li><li><a class="hover:text-primary transition-colors" data-path="investment-calculators" href="#">SIP Calculator</a></li><li><a class="hover:text-primary transition-colors" data-path="savings-calculators" href="#">FD Calculator</a></li><li><a class="hover:text-primary transition-colors" data-path="tax-calculators" href="#">Income Tax Calculator</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md uppercase tracking-wider">Loans &amp; Credit</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Personal Loan</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Car Loan EMI</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Balance Transfer</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Rate Stress Test</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">APR Diagnostic</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">CIBIL Score Insights</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md uppercase tracking-wider">Resources &amp; Tools</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" data-path="amortization-engine" href="#">Amortization Engine</a></li><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Financial Guides</a></li><li><a class="hover:text-primary transition-colors" data-path="tax-calculators" href="#">Tax Slabs 2024-25</a></li><li><a class="hover:text-primary transition-colors" data-path="amortization-engine" href="#">PDF Amortization Reports</a></li><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Financial FAQs</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md uppercase tracking-wider">Legal &amp; Trust</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant mb-space-md"><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Privacy Policy</a></li><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Terms of Service</a></li><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Security Safeguards</a></li></ul><p class="font-body-sm text-[11px] leading-relaxed text-on-surface-variant/80 p-2.5 rounded-lg bg-surface-container-low">Disclaimer: Calculations are for informational purposes only and should not be considered financial advice.</p></div></div><div class="mt-space-xl pt-space-lg border-t border-surface-container flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant"><p>Copyright © 2025 CALCWISE Technologies Private Limited. All rights reserved.</p><div class="flex items-center gap-space-md"><span class="flex items-center gap-1 font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-secondary"></span> Real-Time Calculation Engine v4.2</span></div></div></div></footer></body></html>

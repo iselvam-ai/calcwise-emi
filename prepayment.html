@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed-dim":"#b4c5ff","on-secondary-container":"#fefcff","on-secondary-fixed-variant":"#003ea8","surface":"#faf8ff","on-surface":"#131b2e","error-container":"#ffdad6","error":"#ba1a1a","on-primary":"#ffffff","surface-variant":"#dae2fd","primary-fixed-dim":"#c4c1fb","on-error-container":"#93000a","on-error":"#ffffff","on-background":"#131b2e","on-tertiary":"#ffffff","tertiary-container":"#002819","surface-dim":"#d2d9f4","primary-container":"#1e1b4b","outline":"#787680","primary-fixed":"#e3dfff","surface-container-lowest":"#ffffff","secondary-container":"#316bf3","tertiary-fixed":"#85f8c4","on-tertiary-fixed":"#002114","secondary-fixed":"#dbe1ff","surface-container-high":"#e2e7ff","surface-container":"#eaedff","on-primary-fixed":"#181445","tertiary-fixed-dim":"#68dba9","surface-container-low":"#f2f3ff","tertiary":"#000f07","inverse-primary":"#c4c1fb","on-primary-container":"#8683ba","surface-tint":"#5b598c","surface-container-highest":"#dae2fd","on-secondary":"#ffffff","on-tertiary-container":"#179c6e","outline-variant":"#c8c5d0","surface-bright":"#faf8ff","on-tertiary-fixed-variant":"#005137","primary":"#070235","background":"#faf8ff","on-secondary-fixed":"#00174b","on-primary-fixed-variant":"#444173","inverse-on-surface":"#eef0ff","inverse-surface":"#283044","on-surface-variant":"#47464f","secondary":"#0051d5"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-md":"1rem","gutter-mobile":"1rem","space-xl":"2rem","gutter":"1.5rem","space-2xl":"3rem","margin-mobile":"1rem","margin":"2rem","space-xs":"0.25rem","space-lg":"1.5rem"},fontFamily:{"label-md":["Inter"],"numeric-stat":["Inter"],"numeric-hero":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"label-sm":["Inter"],"body-lg":["Inter"],"headline-sm":["Plus Jakarta Sans"],"body-sm":["Inter"],"headline-lg":["Plus Jakarta Sans"],"label-lg":["Inter"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-md":["Inter"],"body-xl":["Inter"]},fontSize:{"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"numeric-stat":["28px",{lineHeight:"34px",letterSpacing:"-0.02em",fontWeight:"700"}],"numeric-hero":["44px",{lineHeight:"52px",letterSpacing:"-0.025em",fontWeight:"800"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.025em",fontWeight:"800"}],"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"body-lg":["16px",{lineHeight:"24px",letterSpacing:"0em",fontWeight:"400"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",letterSpacing:"0.005em",fontWeight:"400"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-xl-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.025em",fontWeight:"700"}],"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.03em",fontWeight:"800"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",letterSpacing:"0em",fontWeight:"400"}],"body-xl":["18px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(30,27,75,0.05)] border-b border-surface-container-high"><div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="calculators-overview" href="#"><img alt="CALCWISE Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W_04sRD-Uc86wBE-1nhSwsjnl0KMcJaNkbug7UOX3CpQsQEWuquJ_RCX7hR-bv5PSyz980_TdY80DtLwMxAB__hoWExGve9xRIIUznxWkemSQ0Jy77L62uNVsBOsAt4PZsMXNEHtvTxxve7iyiKdFWhyhi9AbIT_XlZkYb1pVmAFJMLhRJykeWjLcnPlDSh1pT0xIC4uJaNl8o3A7aE6S8lwwD4dkIv7GX6hrYl3FX51I79Ql5fU5BmDw"/><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary">CALCWISE</span></a><nav class="hidden xl:flex items-center gap-space-xs ml-space-md" data-active-classes="text-primary font-bold bg-surface-container-high rounded-lg"><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="calculators-overview" href="#">Calculators</a><a aria-current="page" class="px-3 py-2 transition-colors text-primary font-bold bg-surface-container-high rounded-lg" data-path="loan-calculators" href="#">Loans</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="investment-calculators" href="#">Investments</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="savings-calculators" href="#">Savings</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="tax-calculators" href="#">Tax</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="real-estate-calculators" href="#">Real Estate</a><a class="px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="financial-guides" href="#">Guides</a></nav></div><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span>₹ INR</span></div><button class="hidden md:flex items-center gap-space-sm px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all border border-surface-container-high" type="button"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-body-sm text-body-sm">Quick Search</span><kbd class="px-1.5 py-0.5 rounded bg-surface text-on-surface-variant font-label-sm text-label-sm border border-surface-container-high">⌘K</kbd></button><a class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-all shadow-[0_2px_4px_rgba(30,27,75,0.08)]" data-path="auth-portal" href="#">Sign In</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[350px] bg-gradient-to-b from-secondary-fixed/40 via-surface-container-high/30 to-transparent blur-3xl pointer-events-none -z-10"></div>
+<!-- Top Content Container -->
+<div class="max-w-7xl mx-auto px-6 lg:px-12 pt-8 pb-16">
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md mb-4">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Loans</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Loan Prepayment Calculator</span>
+</nav>
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm uppercase tracking-wider mb-3">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Debt Acceleration Diagnostic
+          </div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">
+            Loan Prepayment &amp; Foreclosure Calculator
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">
+            Discover how part-prepayments reduce your loan tenure, slash total interest, and save you lakhs in compounding debt.
+          </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all shadow-sm" id="resetDefaultsBtn">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Reset Baseline</span>
+</button>
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export Report</span>
+</button>
+</div>
+</div>
+<!-- Main Layout: 7/5 Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Interactive Inputs Console (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="bg-surface-container-lowest p-6 sm:p-8 rounded-xl shadow-sm flex flex-col gap-6">
+<div class="flex items-center justify-between pb-4 border-b border-surface-container">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Loan &amp; Balance Parameters</h2>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                RETAIL HOME LOAN
+              </span>
+</div>
+<!-- Input 1: Outstanding Principal -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<label class="font-label-lg text-label-lg text-primary" for="inputPrincipal">Outstanding Principal</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 text-on-surface-variant font-label-lg text-label-lg font-bold">₹</span>
+<input class="pl-7 pr-3 py-1.5 w-40 text-right font-headline-sm text-headline-sm text-primary bg-surface-container-low rounded-lg focus:outline-none focus:bg-surface-container-lowest shadow-sm" id="inputPrincipal" max="20000000" min="100000" step="50000" type="number" value="4000000"/>
+</div>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-secondary" id="sliderPrincipal" max="15000000" min="500000" step="50000" type="range" value="4000000"/>
+<div class="flex justify-between items-center text-on-surface-variant font-body-sm text-body-sm">
+<span>₹5 Lakhs</span>
+<span class="text-on-surface font-medium">Balance left on your loan</span>
+<span>₹1.5 Crores</span>
+</div>
+</div>
+<!-- Row: Current EMI & Interest Rate -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+<!-- EMI -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-primary" for="inputEmi">Current Monthly EMI</label>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Auto-calculated</span>
+</div>
+<div class="relative flex items-center">
+<span class="absolute left-3 text-on-surface-variant font-label-md text-label-md font-bold">₹</span>
+<input class="pl-7 pr-3 py-2 w-full text-right font-headline-sm text-headline-sm text-primary bg-surface-container-low rounded-lg focus:outline-none focus:bg-surface-container-lowest shadow-sm" id="inputEmi" step="500" type="number" value="39385"/>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Standard EMI matching baseline</p>
+</div>
+<!-- Interest Rate -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-primary" for="inputRate">Interest Rate (% p.a.)</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Floating/Fixed</span>
+</div>
+<div class="relative flex items-center">
+<input class="pl-3 pr-8 py-2 w-full text-right font-headline-sm text-headline-sm text-primary bg-surface-container-low rounded-lg focus:outline-none focus:bg-surface-container-lowest shadow-sm" id="inputRate" max="18" min="4" step="0.05" type="number" value="8.50"/>
+<span class="absolute right-3 text-on-surface-variant font-label-md text-label-md font-bold">%</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-secondary mt-1" id="sliderRate" max="14.0" min="6.5" step="0.1" type="range" value="8.50"/>
+</div>
+</div>
+<!-- Remaining Tenure Slider -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div>
+<label class="font-label-lg text-label-lg text-primary" for="inputTenure">Remaining Tenure</label>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Unexpired repayment duration</p>
+</div>
+<div class="flex items-center gap-2">
+<input class="px-3 py-1.5 w-20 text-center font-headline-sm text-headline-sm text-primary bg-surface-container-low rounded-lg focus:outline-none focus:bg-surface-container-lowest shadow-sm" id="inputTenure" max="30" min="1" type="number" value="15"/>
+<span class="font-label-md text-label-md text-on-surface-variant">Years</span>
+</div>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-secondary" id="sliderTenure" max="30" min="2" step="1" type="range" value="15"/>
+<div class="flex justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>2 Years (24 Mos)</span>
+<span class="font-semibold text-primary" id="tenureInMonths">180 Months Remaining</span>
+<span>30 Years (360 Mos)</span>
+</div>
+</div>
+<!-- Prepayment Customization Box -->
+<div class="p-5 rounded-xl bg-surface-container-low flex flex-col gap-5">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<span class="font-label-lg text-label-lg text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">rocket_launch</span>
+                  Prepayment Strategy
+                </span>
+<!-- Frequency Tabs -->
+<div class="inline-flex p-1 rounded-lg bg-surface-container-high" role="tablist">
+<button class="strategy-tab px-3 py-1.5 rounded font-label-sm text-label-sm font-semibold transition-all bg-surface-container-lowest text-primary shadow-sm" data-strat="onetime" id="tabOneTime" type="button">
+                    One-time Lump Sum
+                  </button>
+<button class="strategy-tab px-3 py-1.5 rounded font-label-sm text-label-sm font-semibold transition-all text-on-surface-variant hover:text-on-surface" data-strat="monthly" id="tabMonthlyExtra" type="button">
+                    Monthly Extra
+                  </button>
+<button class="strategy-tab px-3 py-1.5 rounded font-label-sm text-label-sm font-semibold transition-all text-on-surface-variant hover:text-on-surface" data-strat="yearly" id="tabYearlyExtra" type="button">
+                    Yearly Extra
+                  </button>
+</div>
+</div>
+<!-- Prepayment Amount & Month Offset -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="inputPrepayAmount" id="labelPrepayAmount">Prepayment Amount</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 text-on-surface-variant font-label-md text-label-md font-bold">₹</span>
+<input class="pl-7 pr-3 py-2 w-full text-right font-headline-sm text-headline-sm text-primary bg-surface-container-lowest rounded-lg focus:outline-none shadow-sm" id="inputPrepayAmount" min="10000" step="25000" type="number" value="500000"/>
+</div>
+<div class="flex gap-1.5 mt-1">
+<button class="preset-amt px-2 py-1 rounded bg-surface-container text-on-surface-variant hover:text-primary font-label-sm text-label-sm" data-amt="200000" type="button">₹2L</button>
+<button class="preset-amt px-2 py-1 rounded bg-surface-container text-on-surface-variant hover:text-primary font-label-sm text-label-sm" data-amt="500000" type="button">₹5L</button>
+<button class="preset-amt px-2 py-1 rounded bg-surface-container text-on-surface-variant hover:text-primary font-label-sm text-label-sm" data-amt="1000000" type="button">₹10L</button>
+<button class="preset-amt px-2 py-1 rounded bg-surface-container text-on-surface-variant hover:text-primary font-label-sm text-label-sm" data-amt="1500000" type="button">₹15L</button>
+</div>
+</div>
+<div class="flex flex-col gap-1.5" id="timingContainer">
+<label class="font-label-md text-label-md text-on-surface" for="inputPrepayTiming">Execution Timing</label>
+<div class="flex items-center gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-on-surface-variant">calendar_today</span>
+<select class="pl-9 pr-3 py-2.5 w-full bg-surface-container-lowest text-primary rounded-lg font-label-md text-label-md focus:outline-none shadow-sm" id="inputPrepayTiming">
+<option value="1">At Month 1 (Immediate)</option>
+<option value="6">At Month 6 (Half-year)</option>
+<option selected="" value="12">At Month 12 (Year 1 End)</option>
+<option value="24">At Month 24 (Year 2 End)</option>
+<option value="36">At Month 36 (Year 3 End)</option>
+<option value="60">At Month 60 (Year 5 End)</option>
+</select>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Earlier execution saves vastly more interest.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RBI Regulatory Context & Callout Card -->
+<div class="p-5 rounded-xl bg-surface-container-low flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px]">policy</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-primary">RBI Mandated Zero Penalty</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 leading-relaxed">
+                As per Reserve Bank of India guidelines, commercial banks and NBFCs cannot levy any foreclosure or part-prepayment charges on floating-rate housing loans sanctioned to individual borrowers.
+              </p>
+</div>
+</div>
+</div>
+<!-- Right Column: Sticky Projections Breakdown & Impact Hero (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-24">
+<!-- Powerful Key Impact Banner (Emerald Green & Indigo Highlight) -->
+<div class="relative overflow-hidden rounded-xl bg-primary-container p-6 sm:p-7 shadow-lg text-on-primary">
+<!-- Subtle Radial Gradient Background Glow -->
+<div class="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-secondary-container/20 blur-2xl pointer-events-none"></div>
+<div class="absolute -left-12 -bottom-12 w-48 h-48 rounded-full bg-on-tertiary-container/30 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary-container text-tertiary-fixed font-label-sm text-label-sm w-fit font-bold">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">verified</span>
+                ACCELERATED FREEDOM TIMELINE
+              </div>
+<div>
+<h3 class="font-headline-lg text-headline-lg font-extrabold text-on-primary tracking-tight" id="statTenureSaved">
+                  🎉 Finish 2 Years 8 Mos Earlier!
+                </h3>
+<p class="font-body-md text-body-md text-on-primary-container mt-1">
+                  By executing this prepayment strategy, you eliminate <span class="text-on-primary font-semibold" id="statMonthsCut">32 months</span> of amortized debt.
+                </p>
+</div>
+<!-- Main Highlight Metric Box -->
+<div class="p-4 rounded-lg bg-surface-container-lowest/10 backdrop-blur-sm flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container">Estimated Interest Saved</span>
+<div class="font-numeric-hero text-numeric-hero font-extrabold text-tertiary-fixed leading-tight mt-0.5" id="statInterestSavedHero">
+                    ₹6,42,000
+                  </div>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center text-tertiary-fixed shrink-0">
+<span class="material-symbols-outlined text-[26px]">savings</span>
+</div>
+</div>
+<!-- Quick Meta Row -->
+<div class="grid grid-cols-2 gap-3 pt-2">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-primary-container">New Tenure</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary" id="statNewTenureString">12 Yrs 4 Mos</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-primary-container">Total Prepayment Outflow</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary" id="statPrepaymentSum">₹5,00,000</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side-by-Side Visual Comparison Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Card 1: BEFORE PREPAYMENT (Status Quo) -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1.5 mb-3">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">STATUS QUO</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-bold">Without Prepayment</h4>
+<div class="space-y-3 mt-4 text-on-surface">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Remaining Tenure</span>
+<span class="font-label-lg text-label-lg font-bold text-primary" id="statOldTenure">15 Years (180 mos)</span>
+</div>
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Total Interest Due</span>
+<span class="font-label-lg text-label-lg font-bold text-primary" id="statOldInterest">₹28,40,000</span>
+</div>
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Total Outflow</span>
+<span class="font-label-lg text-label-lg font-bold text-primary" id="statOldOutflow">₹68,40,000</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Debt-Free Target</span>
+<span class="font-label-md text-label-md font-bold text-on-surface" id="statOldPayoff">March 2040</span>
+</div>
+</div>
+<!-- Card 2: AFTER PREPAYMENT (Optimized) -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1.5 mb-3">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">OPTIMIZED</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-bold">With Prepayment</h4>
+<div class="space-y-3 mt-4 text-on-surface">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">New Tenure</span>
+<span class="font-label-lg text-label-lg font-bold text-secondary" id="statOptimizedTenure">12 Yrs 4 Mos (148 mos)</span>
+</div>
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Revised Total Interest</span>
+<span class="font-label-lg text-label-lg font-bold text-primary" id="statOptimizedInterest">₹21,98,000</span>
+</div>
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Revised Outflow</span>
+<span class="font-label-lg text-label-lg font-bold text-primary" id="statOptimizedOutflow">₹61,98,000</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container">
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold block">Accelerated Payoff Date</span>
+<span class="font-label-md text-label-md font-bold text-on-tertiary-container" id="statOptimizedPayoff">July 2037</span>
+</div>
+</div>
+</div>
+<!-- Direct Comparison Donut / Ratio Bar -->
+<div class="p-5 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-primary font-semibold">Total Interest Exposure Comparison</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold" id="badgeInterestSlashPct">22.6% Less</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3 flex overflow-hidden">
+<div class="bg-secondary h-full transition-all duration-500" id="barOptimized" style="width: 77.4%;"></div>
+<div class="bg-on-tertiary-container h-full transition-all duration-500" id="barSaved" style="width: 22.6%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant pt-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span>Remaining Interest Payable: <strong class="text-primary" id="ratioRemaining">77.4%</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container"></span>
+<span>Shaved Off: <strong class="text-on-tertiary-container" id="ratioShaved">22.6%</strong></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Amortization Balance Curve Visualization Section -->
+<div class="mt-12 bg-surface-container-lowest p-6 sm:p-8 rounded-xl shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-[20px]">ssid_chart</span>
+<h3 class="font-headline-md text-headline-md text-primary font-bold">Principal Balance Paydown Trajectory</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Visualizing how early lump-sum or continuous extra payments bend the compounding curve downwards.
+            </p>
+</div>
+<!-- Chart Legend -->
+<div class="flex items-center gap-4 text-on-surface font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1 bg-outline rounded-full"></span>
+<span class="text-on-surface-variant">Standard Amortization</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1.5 bg-secondary rounded-full"></span>
+<span class="font-bold text-secondary">Accelerated (Prepaid)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span class="text-on-tertiary-container font-semibold">Payoff Cliff</span>
+</div>
+</div>
+</div>
+<!-- SVG Amortization Canvas -->
+<div class="w-full h-72 sm:h-80 relative bg-surface-container-low rounded-xl p-4 overflow-hidden flex flex-col justify-end">
+<svg class="w-full h-full overflow-visible" id="amortizationSvg" preserveaspectratio="none" viewbox="0 0 900 240">
+<!-- Grid Lines -->
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="900" y1="0" y2="0"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="900" y1="60" y2="60"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="900" y1="120" y2="120"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="900" y1="180" y2="180"></line>
+<line class="text-outline-variant" stroke="currentColor" stroke-width="1.5" x1="0" x2="900" y1="239" y2="239"></line>
+<!-- Standard Loan Trajectory Area Fill -->
+<path class="text-surface-container-high/40" d="M 0 20 Q 450 120 900 240 L 900 240 L 0 240 Z" fill="currentColor" id="pathStandardArea"></path>
+<!-- Accelerated Trajectory Area Fill -->
+<path class="text-secondary/10" d="M 0 20 Q 80 50 120 90 Q 400 170 740 240 L 740 240 L 0 240 Z" fill="currentColor" id="pathAcceleratedArea"></path>
+<!-- Standard Loan Curve (Status Quo) -->
+<path class="text-outline" d="M 0 20 Q 450 120 900 240" fill="none" id="pathStandard" stroke="currentColor" stroke-dasharray="6 6" stroke-width="2.5"></path>
+<!-- Accelerated Curve (With Prepayment) -->
+<path class="text-secondary" d="M 0 20 L 70 32 L 70 65 Q 360 160 740 240" fill="none" id="pathAccelerated" stroke="currentColor" stroke-linecap="round" stroke-width="3.5"></path>
+<!-- Prepayment Injection Point Marker -->
+<g id="prepaymentMarker" transform="translate(70, 65)">
+<circle class="text-secondary" fill="currentColor" r="5"></circle>
+<circle class="text-secondary animate-ping opacity-75" fill="none" r="10" stroke="currentColor" stroke-width="1.5"></circle>
+</g>
+<!-- Zero Debt Payoff Point (Accelerated) -->
+<g id="acceleratedPayoffMarker" transform="translate(740, 240)">
+<circle class="text-on-tertiary-container" fill="currentColor" r="6"></circle>
+<line class="text-on-tertiary-container" stroke="currentColor" stroke-dasharray="2 2" stroke-width="1" x1="0" x2="0" y1="-230" y2="0"></line>
+</g>
+<!-- Status Quo Payoff Point -->
+<g id="standardPayoffMarker" transform="translate(900, 240)">
+<circle class="text-outline" fill="currentColor" r="5"></circle>
+</g>
+</svg>
+<!-- Chart Timeline Milestones Row -->
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm pt-3 border-t border-surface-container-high">
+<span>Today (Start)</span>
+<span class="text-secondary font-semibold">Prepayment Injected</span>
+<span class="text-on-tertiary-container font-bold" id="chartLabelOptimizedEnd">Month 148: Zero Debt</span>
+<span class="text-on-surface-variant" id="chartLabelOldEnd">Month 180 (Standard Finish)</span>
+</div>
+</div>
+<!-- Comparative Milestone Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+<div class="p-4 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Payment Redirection</span>
+<span class="font-numeric-stat text-numeric-stat text-primary font-bold mt-1" id="metricSavedRatio">₹6.42 Lakhs</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Free cash flow retained in your portfolio</span>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Equated Tenure Elimination</span>
+<span class="font-numeric-stat text-numeric-stat text-secondary font-bold mt-1" id="metricTenureCut">32 Months</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Equivalent to 2.67 years of freedom</span>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Effective Return on Prepayment</span>
+<span class="font-numeric-stat text-numeric-stat text-on-tertiary-container font-bold mt-1" id="metricPrepaymentYield">128.4%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Guaranteed tax-free interest yield</span>
+</div>
+</div>
+</div>
+<!-- Prepayment Pro-Tips & Tactical Insights -->
+<div class="mt-12 mb-8">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary font-bold">Institutional Debt Strategies &amp; Pro-Tips</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Tip 1 -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-label-lg text-label-lg font-bold text-secondary mb-4">
+                01
+              </div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-semibold mb-2">Front-Loaded Savings</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Prepaying early in your tenure delivers maximum compound interest savings. In the first 5 years of an Indian home loan, up to 70% of each regular EMI covers pure interest.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center gap-2 text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">bolt</span>
+<span>Impact: 3x greater in Year 1 vs Year 10</span>
+</div>
+</div>
+<!-- Tip 2 -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-label-lg text-label-lg font-bold text-secondary mb-4">
+                02
+              </div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-semibold mb-2">The 1-Extra EMI Strategy</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Paying just one additional EMI each calendar year via annual performance bonus cuts an ordinary 20-year home loan by over 4 years without tightening monthly cash-flow.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center gap-2 text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">calendar_month</span>
+<span>Simple, habit-based debt reduction</span>
+</div>
+</div>
+<!-- Tip 3 -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-label-lg text-label-lg font-bold text-secondary mb-4">
+                03
+              </div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-semibold mb-2">Prepay vs SIP Arbitrage</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Prepaying yields a guaranteed tax-free return equal to your lending rate (8.50%). Compare this against mutual fund equity SIPs, accounting for market volatility and 12.5% Long-Term Capital Gains (LTCG) tax.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center gap-2 text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">query_stats</span>
+<span>Risk-free sovereign equivalent return</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+(function() {
+  // DOM Elements
+  const inputPrincipal = document.getElementById('inputPrincipal');
+  const sliderPrincipal = document.getElementById('sliderPrincipal');
+  const inputEmi = document.getElementById('inputEmi');
+  const inputRate = document.getElementById('inputRate');
+  const sliderRate = document.getElementById('sliderRate');
+  const inputTenure = document.getElementById('inputTenure');
+  const sliderTenure = document.getElementById('sliderTenure');
+  const tenureInMonths = document.getElementById('tenureInMonths');
+  
+  const strategyTabs = document.querySelectorAll('.strategy-tab');
+  const labelPrepayAmount = document.getElementById('labelPrepayAmount');
+  const inputPrepayAmount = document.getElementById('inputPrepayAmount');
+  const inputPrepayTiming = document.getElementById('inputPrepayTiming');
+  const timingContainer = document.getElementById('timingContainer');
+  const presetBtns = document.querySelectorAll('.preset-amt');
+  const resetBtn = document.getElementById('resetDefaultsBtn');
+
+  // Hero Stats
+  const statTenureSaved = document.getElementById('statTenureSaved');
+  const statMonthsCut = document.getElementById('statMonthsCut');
+  const statInterestSavedHero = document.getElementById('statInterestSavedHero');
+  const statNewTenureString = document.getElementById('statNewTenureString');
+  const statPrepaymentSum = document.getElementById('statPrepaymentSum');
+
+  // Side-by-Side Status Quo
+  const statOldTenure = document.getElementById('statOldTenure');
+  const statOldInterest = document.getElementById('statOldInterest');
+  const statOldOutflow = document.getElementById('statOldOutflow');
+  const statOldPayoff = document.getElementById('statOldPayoff');
+
+  // Side-by-Side Optimized
+  const statOptimizedTenure = document.getElementById('statOptimizedTenure');
+  const statOptimizedInterest = document.getElementById('statOptimizedInterest');
+  const statOptimizedOutflow = document.getElementById('statOptimizedOutflow');
+  const statOptimizedPayoff = document.getElementById('statOptimizedPayoff');
+
+  // Progress Bar & Summary Metrics
+  const badgeInterestSlashPct = document.getElementById('badgeInterestSlashPct');
+  const barOptimized = document.getElementById('barOptimized');
+  const barSaved = document.getElementById('barSaved');
+  const ratioRemaining = document.getElementById('ratioRemaining');
+  const ratioShaved = document.getElementById('ratioShaved');
+
+  const metricSavedRatio = document.getElementById('metricSavedRatio');
+  const metricTenureCut = document.getElementById('metricTenureCut');
+  const metricPrepaymentYield = document.getElementById('metricPrepaymentYield');
+
+  // SVG elements
+  const pathAccelerated = document.getElementById('pathAccelerated');
+  const pathAcceleratedArea = document.getElementById('pathAcceleratedArea');
+  const prepaymentMarker = document.getElementById('prepaymentMarker');
+  const acceleratedPayoffMarker = document.getElementById('acceleratedPayoffMarker');
+  const chartLabelOptimizedEnd = document.getElementById('chartLabelOptimizedEnd');
+  const chartLabelOldEnd = document.getElementById('chartLabelOldEnd');
+
+  let activeStrategy = 'onetime';
+
+  // Format INR Currency
+  function formatINR(number) {
+    if (isNaN(number)) return '₹0';
+    return '₹' + Math.round(number).toLocaleString('en-IN');
+  }
+
+  function formatShortLakhs(number) {
+    const l = number / 100000;
+    return '₹' + l.toFixed(2) + ' Lakhs';
+  }
+
+  function getPayoffDate(monthsFromNow) {
+    const d = new Date();
+    d.setMonth(d.getMonth() + monthsFromNow);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return `${months[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  function calculateStandardEMI(p, rMonthly, nMonths) {
+    if (rMonthly === 0) return p / nMonths;
+    return (p * rMonthly * Math.pow(1 + rMonthly, nMonths)) / (Math.pow(1 + rMonthly, nMonths) - 1);
+  }
+
+  // Core Simulation Engine
+  function recalculate() {
+    let p = parseFloat(inputPrincipal.value) || 4000000;
+    let annualRate = parseFloat(inputRate.value) || 8.5;
+    let tenureYears = parseFloat(inputTenure.value) || 15;
+    let nMonths = Math.round(tenureYears * 12);
+    let r = (annualRate / 12) / 100;
+    
+    // Auto-compute baseline EMI
+    let standardEmi = calculateStandardEMI(p, r, nMonths);
+    // Only update EMI input if not focused
+    if (document.activeElement !== inputEmi) {
+      inputEmi.value = Math.round(standardEmi);
+    } else {
+      standardEmi = parseFloat(inputEmi.value) || standardEmi;
+    }
+
+    tenureInMonths.textContent = `${nMonths} Months Remaining`;
+
+    // Standard Amortization Totals
+    let standardTotalInterest = (standardEmi * nMonths) - p;
+    let standardTotalOutflow = standardEmi * nMonths;
+
+    // Simulation of Prepayment
+    let prepayAmount = parseFloat(inputPrepayAmount.value) || 500000;
+    let prepayTimingMonth = parseInt(inputPrepayTiming.value) || 12;
+
+    let balance = p;
+    let totalInterestAccelerated = 0;
+    let monthsElapsed = 0;
+    let totalPrepaymentInjected = 0;
+
+    let maxSimMonths = 600; // safety ceiling
+
+    while (balance > 1 && monthsElapsed < maxSimMonths) {
+      monthsElapsed++;
+      let interestThisMonth = balance * r;
+      totalInterestAccelerated += interestThisMonth;
+
+      let principalPaid = standardEmi - interestThisMonth;
+
+      // Check Strategy Extra Payments
+      let extraThisMonth = 0;
+      if (activeStrategy === 'onetime') {
+        if (monthsElapsed === prepayTimingMonth) {
+          extraThisMonth = prepayAmount;
+        }
+      } else if (activeStrategy === 'monthly') {
+        extraThisMonth = prepayAmount;
+      } else if (activeStrategy === 'yearly') {
+        if (monthsElapsed % 12 === 0) {
+          extraThisMonth = prepayAmount;
+        }
+      }
+
+      totalPrepaymentInjected += extraThisMonth;
+      balance = balance - principalPaid - extraThisMonth;
+
+      if (balance <= 0) {
+        break;
+      }
+    }
+
+    let monthsCut = Math.max(0, nMonths - monthsElapsed);
+    let interestSaved = Math.max(0, standardTotalInterest - totalInterestAccelerated);
+    let totalOptimizedOutflow = p + totalInterestAccelerated;
+
+    // Years and months for difference
+    let savedYears = Math.floor(monthsCut / 12);
+    let savedRemMonths = monthsCut % 12;
+    let optYears = Math.floor(monthsElapsed / 12);
+    let optRemMonths = monthsElapsed % 12;
+
+    // Populate Hero
+    if (monthsCut > 0) {
+      statTenureSaved.textContent = `🎉 Finish ${savedYears} Yrs ${savedRemMonths} Mos Earlier!`;
+    } else {
+      statTenureSaved.textContent = `Debt-free as scheduled`;
+    }
+    statMonthsCut.textContent = `${monthsCut} months`;
+    statInterestSavedHero.textContent = formatINR(interestSaved);
+    statNewTenureString.textContent = `${optYears} Yrs ${optRemMonths} Mos`;
+    statPrepaymentSum.textContent = formatINR(totalPrepaymentInjected);
+
+    // Populate Side-by-Side Status Quo
+    statOldTenure.textContent = `${tenureYears} Years (${nMonths} mos)`;
+    statOldInterest.textContent = formatINR(standardTotalInterest);
+    statOldOutflow.textContent = formatINR(standardTotalOutflow);
+    statOldPayoff.textContent = getPayoffDate(nMonths);
+
+    // Populate Side-by-Side Optimized
+    statOptimizedTenure.textContent = `${optYears} Yrs ${optRemMonths} Mos (${monthsElapsed} mos)`;
+    statOptimizedInterest.textContent = formatINR(totalInterestAccelerated);
+    statOptimizedOutflow.textContent = formatINR(totalOptimizedOutflow);
+    statOptimizedPayoff.textContent = getPayoffDate(monthsElapsed);
+
+    // Ratios & Percentages
+    let savingsPct = standardTotalInterest > 0 ? (interestSaved / standardTotalInterest) * 100 : 0;
+    savingsPct = Math.min(Math.max(savingsPct, 0), 100);
+    let remainingPct = 100 - savingsPct;
+
+    badgeInterestSlashPct.textContent = `${savingsPct.toFixed(1)}% Less`;
+    barOptimized.style.width = `${remainingPct}%`;
+    barSaved.style.width = `${savingsPct}%`;
+    ratioRemaining.textContent = `${remainingPct.toFixed(1)}%`;
+    ratioShaved.textContent = `${savingsPct.toFixed(1)}%`;
+
+    // Highlight metrics
+    metricSavedRatio.textContent = formatShortLakhs(interestSaved);
+    metricTenureCut.textContent = `${monthsCut} Months`;
+    let effectiveYield = totalPrepaymentInjected > 0 ? (interestSaved / totalPrepaymentInjected) * 100 : 0;
+    metricPrepaymentYield.textContent = `${effectiveYield.toFixed(1)}%`;
+
+    // Dynamic Chart Path Update
+    let acceleratedFraction = Math.min(1, monthsElapsed / nMonths);
+    let accelX = Math.round(acceleratedFraction * 900);
+    accelX = Math.max(80, Math.min(880, accelX));
+
+    // Dynamic Marker Position
+    let timingFrac = prepayTimingMonth / nMonths;
+    let prepayX = Math.min(Math.round(timingFrac * 900), accelX - 30);
+    let prepayY = Math.round(20 + (prepayX / 900) * 120);
+
+    pathAccelerated.setAttribute('d', `M 0 20 L ${prepayX} ${prepayY} L ${prepayX} ${prepayY + 25} Q ${(prepayX + accelX)/2} ${Math.min(235, prepayY + 110)} ${accelX} 240`);
+    pathAcceleratedArea.setAttribute('d', `M 0 20 L ${prepayX} ${prepayY} L ${prepayX} ${prepayY + 25} Q ${(prepayX + accelX)/2} ${Math.min(235, prepayY + 110)} ${accelX} 240 L ${accelX} 240 L 0 240 Z`);
+
+    prepaymentMarker.setAttribute('transform', `translate(${prepayX}, ${prepayY + 25})`);
+    acceleratedPayoffMarker.setAttribute('transform', `translate(${accelX}, 240)`);
+
+    chartLabelOptimizedEnd.textContent = `Month ${monthsElapsed}: Zero Debt`;
+    chartLabelOldEnd.textContent = `Month ${nMonths} (Standard Finish)`;
+  }
+
+  // Event Listeners for Syncing
+  inputPrincipal.addEventListener('input', () => {
+    sliderPrincipal.value = inputPrincipal.value;
+    recalculate();
+  });
+  sliderPrincipal.addEventListener('input', () => {
+    inputPrincipal.value = sliderPrincipal.value;
+    recalculate();
+  });
+
+  inputRate.addEventListener('input', () => {
+    sliderRate.value = inputRate.value;
+    recalculate();
+  });
+  sliderRate.addEventListener('input', () => {
+    inputRate.value = sliderRate.value;
+    recalculate();
+  });
+
+  inputTenure.addEventListener('input', () => {
+    sliderTenure.value = inputTenure.value;
+    recalculate();
+  });
+  sliderTenure.addEventListener('input', () => {
+    inputTenure.value = sliderTenure.value;
+    recalculate();
+  });
+
+  inputEmi.addEventListener('input', recalculate);
+  inputPrepayAmount.addEventListener('input', recalculate);
+  inputPrepayTiming.addEventListener('change', recalculate);
+
+  // Quick Preset Buttons
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      inputPrepayAmount.value = btn.dataset.amt;
+      recalculate();
+    });
+  });
+
+  // Strategy Tabs Switcher
+  strategyTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      strategyTabs.forEach(t => {
+        t.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        t.classList.add('text-on-surface-variant');
+      });
+      tab.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+      tab.classList.remove('text-on-surface-variant');
+
+      activeStrategy = tab.dataset.strat;
+
+      if (activeStrategy === 'onetime') {
+        labelPrepayAmount.textContent = 'One-time Prepayment Amount';
+        inputPrepayAmount.value = '500000';
+        timingContainer.classList.remove('hidden');
+      } else if (activeStrategy === 'monthly') {
+        labelPrepayAmount.textContent = 'Extra Monthly Amount (SIP Style)';
+        inputPrepayAmount.value = '5000';
+        timingContainer.classList.add('hidden');
+      } else if (activeStrategy === 'yearly') {
+        labelPrepayAmount.textContent = 'Extra Annual Payment (Bonus)';
+        inputPrepayAmount.value = '50000';
+        timingContainer.classList.add('hidden');
+      }
+      recalculate();
+    });
+  });
+
+  // Reset Button
+  resetBtn.addEventListener('click', () => {
+    inputPrincipal.value = 4000000;
+    sliderPrincipal.value = 4000000;
+    inputRate.value = 8.50;
+    sliderRate.value = 8.50;
+    inputTenure.value = 15;
+    sliderTenure.value = 15;
+    inputPrepayAmount.value = 500000;
+    inputPrepayTiming.value = '12';
+    
+    // Switch to One-time tab
+    document.getElementById('tabOneTime').click();
+    recalculate();
+  });
+
+  // Run initial calculation
+  recalculate();
+})();
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-surface-container-high"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl"><div class="lg:col-span-1"><div class="flex items-center gap-space-sm mb-space-sm"><img alt="CALCWISE Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W_04sRD-Uc86wBE-1nhSwsjnl0KMcJaNkbug7UOX3CpQsQEWuquJ_RCX7hR-bv5PSyz980_TdY80DtLwMxAB__hoWExGve9xRIIUznxWkemSQ0Jy77L62uNVsBOsAt4PZsMXNEHtvTxxve7iyiKdFWhyhi9AbIT_XlZkYb1pVmAFJMLhRJykeWjLcnPlDSh1pT0xIC4uJaNl8o3A7aE6S8lwwD4dkIv7GX6hrYl3FX51I79Ql5fU5BmDw"/><span class="font-headline-sm text-headline-sm font-bold text-primary">CALCWISE</span></div><p class="font-label-lg text-label-lg font-semibold text-secondary mb-space-xs">Calculate. Compare. Plan.</p><p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">Engineered for precision Indian retail finance and institutional wealth projection.</p><div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-medium"><span class="material-symbols-outlined text-[14px] text-secondary">verified</span><span>Made for India</span></div></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md uppercase tracking-wider">Calculators</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" data-path="calculators-overview" href="#">EMI Calculator</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Home Loan EMI</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Prepayment Analysis</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Affordability Estimator</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Loan Comparison</a></li><li><a class="hover:text-primary transition-colors" data-path="investment-calculators" href="#">SIP Calculator</a></li><li><a class="hover:text-primary transition-colors" data-path="savings-calculators" href="#">FD Calculator</a></li><li><a class="hover:text-primary transition-colors" data-path="tax-calculators" href="#">Income Tax Calculator</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md uppercase tracking-wider">Loans &amp; Credit</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Personal Loan</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Car Loan EMI</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Balance Transfer</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">Rate Stress Test</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">APR Diagnostic</a></li><li><a class="hover:text-primary transition-colors" data-path="loan-calculators" href="#">CIBIL Score Insights</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md uppercase tracking-wider">Resources &amp; Tools</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" data-path="amortization-engine" href="#">Amortization Engine</a></li><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Financial Guides</a></li><li><a class="hover:text-primary transition-colors" data-path="tax-calculators" href="#">Tax Slabs 2024-25</a></li><li><a class="hover:text-primary transition-colors" data-path="amortization-engine" href="#">PDF Amortization Reports</a></li><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Financial FAQs</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md uppercase tracking-wider">Legal &amp; Trust</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant mb-space-md"><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Privacy Policy</a></li><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Terms of Service</a></li><li><a class="hover:text-primary transition-colors" data-path="financial-guides" href="#">Security Safeguards</a></li></ul><p class="font-body-sm text-[11px] leading-relaxed text-on-surface-variant/80 p-2.5 rounded-lg bg-surface-container-low">Disclaimer: Calculations are for informational purposes only and should not be considered financial advice.</p></div></div><div class="mt-space-xl pt-space-lg border-t border-surface-container flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant"><p>Copyright © 2025 CALCWISE Technologies Private Limited. All rights reserved.</p><div class="flex items-center gap-space-md"><span class="flex items-center gap-1 font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-secondary"></span> Real-Time Calculation Engine v4.2</span></div></div></div></footer></body></html>
