@@ -711,31 +711,7 @@
   // Initial Calculation Run
   calculateEMI();
 </script>
-<section id="calcwise-amort-section" class="max-w-7xl mx-auto px-6 lg:px-12 pb-12">
-  <div style="border-radius:16px;overflow:hidden;border:1px solid #E2E8F0">
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:#F8FAFC;border-bottom:1px solid #E2E8F0">
-      <h2 style="font-size:18px;font-weight:700;color:#070235;margin:0">Payment Schedule</h2>
-      <div style="display:flex;gap:6px">
-        <button id="btn-cal" class="amort-year-btn active" onclick="setAmortMode('cal')">Calendar Year</button>
-        <button id="btn-fy" class="amort-year-btn" onclick="setAmortMode('fy')">Financial Year</button>
-      </div>
-    </div>
-    <div class="amort-scroll">
-      <table id="amort-table">
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Principal Paid</th>
-            <th>Interest Paid</th>
-            <th>Total Payment</th>
-            <th>Balance</th>
-          </tr>
-        </thead>
-        <tbody id="amort-body"></tbody>
-      </table>
-    </div>
-  </div>
-</section>
+
 </main><footer style="background:#F8FAFC;border-top:1px solid #E2E8F0;padding:32px 24px;text-align:center">
   <div style="max-width:1200px;margin:0 auto">
     <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:16px;font-size:13px">
@@ -747,140 +723,216 @@
     <p style="font-size:12px;color:#94A3B8">© 2026 NidSpace · CalcWise — Financial Tools · Calculations are for informational purposes only and should not be considered financial advice.</p>
   </div>
 </footer>
+
+
+<!-- AMORTIZATION SECTION -->
 <style>
 @media print {
-  header, footer, nav, .no-print { display: none !important; }
+  header, footer, nav { display: none !important; }
   body { background: white !important; }
-  #calcwise-amort-section { display: block !important; }
 }
-#calcwise-amort-section {
-  margin: 32px 0;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #E2E8F0;
+#cw-amort { margin: 0 0 40px 0; }
+#cw-amort-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 20px; background: #f2f4f7; border-bottom: 1px solid #dde1ea;
 }
-#calcwise-amort-section h2 {
-  font-size: 18px;
-  font-weight: 700;
-  padding: 20px 24px;
-  background: #F8FAFC;
+#cw-amort-head h2 { font-size: 16px; font-weight: 700; color: #070235; margin: 0; }
+.cw-ytog { display: flex; gap: 6px; }
+.cw-ybtn {
+  padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  cursor: pointer; border: 1px solid #CBD5E1; background: white; color: #475569;
+  font-family: inherit; transition: all 0.15s;
+}
+.cw-ybtn.active { background: #070235; border-color: #070235; color: white; }
+.cw-scroll { max-height: 500px; overflow-y: auto; }
+.cw-scroll::-webkit-scrollbar { width: 5px; }
+.cw-scroll::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+#cw-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+#cw-tbl thead th {
+  position: sticky; top: 0; padding: 12px 16px; text-align: right;
+  font-weight: 700; font-size: 12px; white-space: nowrap; z-index: 2;
+}
+#cw-tbl thead th:first-child { text-align: left; background: #f2f4f7; color: #333; }
+#cw-tbl thead th.col-p { background: #6B8E00; color: white; }
+#cw-tbl thead th.col-i { background: #D97A00; color: white; }
+#cw-tbl thead th.col-t { background: #444; color: white; }
+#cw-tbl thead th.col-b { background: #A0174A; color: white; }
+#cw-tbl thead th.col-pct { background: #f2f4f7; color: #333; }
+/* Year rows */
+.yr-row td {
+  padding: 10px 16px; text-align: right;
   border-bottom: 1px solid #E2E8F0;
-  color: #070235;
-}
-.amort-toggle-row {
-  display: flex;
-  gap: 8px;
-  padding: 12px 24px;
-  background: #F8FAFC;
-  border-bottom: 1px solid #E2E8F0;
-}
-.amort-year-btn {
-  padding: 5px 14px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
+  font-weight: 700; background: #F8FAFC; color: #070235;
   cursor: pointer;
-  border: 1px solid #CBD5E1;
-  background: white;
-  color: #475569;
-  font-family: inherit;
-  transition: all 0.15s;
 }
-.amort-year-btn.active {
-  background: #070235;
-  border-color: #070235;
-  color: white;
-}
-.amort-scroll {
-  max-height: 400px;
-  overflow-y: auto;
-}
-.amort-scroll::-webkit-scrollbar { width: 4px; }
-.amort-scroll::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 2px; }
-#amort-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-#amort-table thead th {
-  position: sticky;
-  top: 0;
-  background: #070235;
-  color: white;
-  padding: 10px 16px;
-  text-align: right;
-  font-weight: 600;
-  white-space: nowrap;
-}
-#amort-table thead th:first-child { text-align: left; }
-#amort-table tbody td {
-  padding: 9px 16px;
-  text-align: right;
+.yr-row td:first-child { text-align: left; }
+.yr-row:hover td { background: #EEF2FF; }
+/* Month rows */
+.mo-row { display: none; }
+.mo-row.open { display: table-row; }
+.mo-row td {
+  padding: 8px 16px; text-align: right;
   border-bottom: 1px solid #F1F5F9;
-  color: #475569;
+  color: #475569; background: white; font-weight: 400;
 }
-#amort-table tbody td:first-child { text-align: left; color: #070235; font-weight: 600; }
-#amort-table tbody tr:hover td { background: #EEF4FF; }
-#amort-table tbody tr:last-child td { border-bottom: none; font-weight: 700; color: #070235; }
+.mo-row td:first-child { text-align: left; color: #64748B; padding-left: 32px; }
+.mo-row:hover td { background: #F8FAFC; }
+.expand-icon { font-size: 11px; margin-right: 6px; color: #0051d5; }
 </style>
 
+<section id="cw-amort" class="max-w-7xl mx-auto px-6 lg:px-12">
+  <div style="border:1px solid #dde1ea;border-radius:12px;overflow:hidden">
+    <div id="cw-amort-head">
+      <h2>Payment Schedule</h2>
+      <div class="cw-ytog">
+        <button class="cw-ybtn active" id="btn-cal" onclick="setAmortMode('cal')">Calendar Year</button>
+        <button class="cw-ybtn" id="btn-fy" onclick="setAmortMode('fy')">Financial Year</button>
+      </div>
+    </div>
+    <div class="cw-scroll">
+      <table id="cw-tbl">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th class="col-p">Principal (A)</th>
+            <th class="col-i">Interest (B)</th>
+            <th class="col-t">Total Payment (A+B)</th>
+            <th class="col-b">Balance</th>
+            <th class="col-pct">Loan Paid To Date</th>
+          </tr>
+        </thead>
+        <tbody id="cw-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <script>
-// ── AMORTIZATION TABLE ──────────────────────────────────
-let amortYearMode = 'cal';
+var cwAmortMode = 'cal';
+var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-function buildAmortTable() {
-  const principal = parseFormattedNumber(document.getElementById('loanAmountInput').value);
-  const annualRate = parseFloat(document.getElementById('interestRateInput').value) || 0;
-  let tenureVal = parseFloat(document.getElementById('tenureValueInput').value) || 1;
-  let numberOfMonths = (typeof tenureMode !== 'undefined' && tenureMode === 'months') ? tenureVal : tenureVal * 12;
+function fmtIN(n) {
+  if (isNaN(n) || n === null) return '0';
+  n = Math.round(n);
+  var x = n.toString();
+  var last3 = x.slice(-3);
+  var rest = x.slice(0, -3);
+  if (rest) last3 = ',' + last3;
+  return '₹' + rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + last3;
+}
 
-  const monthlyRate = annualRate / 12 / 100;
-  const compoundFactor = monthlyRate > 0 ? Math.pow(1 + monthlyRate, numberOfMonths) : 1;
-  const emi = monthlyRate > 0 ? (principal * monthlyRate * compoundFactor) / (compoundFactor - 1) : principal / numberOfMonths;
+function buildCwAmort() {
+  var principal = parseFormattedNumber(document.getElementById('loanAmountInput').value);
+  var annualRate = parseFloat(document.getElementById('interestRateInput').value) || 0;
+  var tenureVal = parseFloat(document.getElementById('tenureValueInput').value) || 1;
+  var numberOfMonths = (typeof tenureMode !== 'undefined' && tenureMode === 'months') ? tenureVal : tenureVal * 12;
+  var monthlyRate = annualRate / 12 / 100;
+  var emi = monthlyRate > 0
+    ? (principal * monthlyRate * Math.pow(1+monthlyRate,numberOfMonths)) / (Math.pow(1+monthlyRate,numberOfMonths)-1)
+    : principal / numberOfMonths;
 
-  let bal = principal;
-  let rows = '';
-  const currentYear = new Date().getFullYear();
+  var bal = principal;
+  var totalPaid = 0;
+  var rows = '';
+  var curDate = new Date();
+  var curMonth = curDate.getMonth(); // 0-indexed
+  var curYear = curDate.getFullYear();
+  var mIdx = 0;
 
-  for (let y = 1; y <= Math.ceil(numberOfMonths / 12); y++) {
-    let yPri = 0, yInt = 0, months = Math.min(12, numberOfMonths - (y-1)*12);
-    for (let m = 0; m < months; m++) {
-      if (bal <= 0.01) break;
-      const ip = bal * monthlyRate;
-      const pr = Math.min(emi - ip, bal);
-      yInt += ip; yPri += pr; bal -= pr;
+  // Group by year
+  var years = {};
+  var yearOrder = [];
+
+  for (var m = 0; m < numberOfMonths; m++) {
+    if (bal <= 0.01) break;
+    var mDate = new Date(curYear, curMonth + m, 1);
+    var mY = mDate.getFullYear();
+    var mM = mDate.getMonth();
+
+    var fy = cwAmortMode === 'fy'
+      ? (mM >= 3 ? mY : mY - 1)
+      : mY;
+    var fyLabel = cwAmortMode === 'fy'
+      ? 'FY ' + fy + '-' + String(fy+1).slice(-2)
+      : String(fy);
+
+    var ip = bal * monthlyRate;
+    var pr = Math.min(emi - ip, bal);
+    bal -= pr;
+    totalPaid += pr;
+
+    if (!years[fyLabel]) {
+      years[fyLabel] = { pri: 0, int: 0, months: [], label: fyLabel };
+      yearOrder.push(fyLabel);
     }
-    const label = amortYearMode === 'cal'
-      ? (currentYear + y - 1)
-      : 'FY ' + (currentYear + y - 1) + '-' + String(currentYear + y).slice(-2);
-
-    rows += '<tr>'
-      + '<td>' + label + '</td>'
-      + '<td>₹' + formatIndianCurrency(yPri) + '</td>'
-      + '<td>₹' + formatIndianCurrency(yInt) + '</td>'
-      + '<td>₹' + formatIndianCurrency(yPri + yInt) + '</td>'
-      + '<td>₹' + formatIndianCurrency(Math.max(0, bal)) + '</td>'
-      + '</tr>';
+    years[fyLabel].pri += pr;
+    years[fyLabel].int += ip;
+    years[fyLabel].months.push({
+      label: MONTHS[mM] + ' ' + mY,
+      pri: pr, int: ip, bal: bal
+    });
   }
-  document.getElementById('amort-body').innerHTML = rows;
+
+  // Running paid
+  var runPaid = 0;
+  yearOrder.forEach(function(yLabel, yi) {
+    var yr = years[yLabel];
+    runPaid += yr.pri;
+    var paidPct = ((runPaid / principal) * 100).toFixed(2) + '%';
+    var yBal = yr.months[yr.months.length-1].bal;
+    var yid = 'yr-' + yi;
+
+    rows += '<tr class="yr-row" onclick="toggleYear('' + yid + '')">'
+      + '<td><span class="expand-icon" id="ico-' + yid + '">⊞</span>' + yLabel + '</td>'
+      + '<td>' + fmtIN(yr.pri) + '</td>'
+      + '<td>' + fmtIN(yr.int) + '</td>'
+      + '<td>' + fmtIN(yr.pri + yr.int) + '</td>'
+      + '<td>' + fmtIN(Math.max(0, yBal)) + '</td>'
+      + '<td>' + paidPct + '</td>'
+      + '</tr>';
+
+    var moRunPaid = runPaid - yr.pri;
+    yr.months.forEach(function(mo) {
+      moRunPaid += mo.pri;
+      var moPct = ((moRunPaid / principal) * 100).toFixed(2) + '%';
+      rows += '<tr class="mo-row" id="mo-' + yid + '">'
+        + '<td>' + mo.label + '</td>'
+        + '<td>' + fmtIN(mo.pri) + '</td>'
+        + '<td>' + fmtIN(mo.int) + '</td>'
+        + '<td>' + fmtIN(mo.pri + mo.int) + '</td>'
+        + '<td>' + fmtIN(Math.max(0, mo.bal)) + '</td>'
+        + '<td>' + moPct + '</td>'
+        + '</tr>';
+    });
+  });
+
+  document.getElementById('cw-tbody').innerHTML = rows;
+}
+
+function toggleYear(yid) {
+  var rows = document.querySelectorAll('#mo-' + yid);
+  var ico = document.getElementById('ico-' + yid);
+  var isOpen = rows[0] && rows[0].classList.contains('open');
+  rows.forEach(function(r) { r.classList.toggle('open', !isOpen); });
+  if (ico) ico.textContent = isOpen ? '⊞' : '⊟';
 }
 
 function setAmortMode(mode) {
-  amortYearMode = mode;
-  document.getElementById('btn-cal').className = 'amort-year-btn' + (mode==='cal'?' active':'');
-  document.getElementById('btn-fy').className = 'amort-year-btn' + (mode==='fy'?' active':'');
-  buildAmortTable();
+  cwAmortMode = mode;
+  document.getElementById('btn-cal').className = 'cw-ybtn' + (mode==='cal'?' active':'');
+  document.getElementById('btn-fy').className = 'cw-ybtn' + (mode==='fy'?' active':'');
+  buildCwAmort();
 }
 
-// Rebuild amort table whenever EMI recalculates
-const _origCalcEMI = calculateEMI;
-function calculateEMI() {
-  _origCalcEMI();
-  if (document.getElementById('amort-body')) buildAmortTable();
-}
+// Hook into calculateEMI
+var _origEMI = calculateEMI;
+calculateEMI = function() {
+  _origEMI();
+  if (document.getElementById('cw-tbody')) buildCwAmort();
+};
 
-window.addEventListener('DOMContentLoaded', function() {
-  buildAmortTable();
+document.addEventListener('DOMContentLoaded', function() {
+  buildCwAmort();
 });
 </script>
 </body></html>
