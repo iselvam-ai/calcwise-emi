@@ -712,6 +712,185 @@
   calculateEMI();
 </script>
 
+
+<!-- CALCWISE AMORTIZATION -->
+<style>
+@media print { header,footer,nav,.no-print{display:none!important} }
+#cw-amort{padding:0 24px 48px;max-width:1200px;margin:0 auto}
+.cw-tbl-wrap{border:1px solid #dde1ea;border-radius:12px;overflow:hidden}
+.cw-tbl-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#f2f4f7;border-bottom:1px solid #dde1ea}
+.cw-tbl-head h3{font-size:16px;font-weight:700;color:#070235;margin:0}
+.cw-ytog{display:flex;gap:6px}
+.cw-ybtn{padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #CBD5E1;background:white;color:#475569;font-family:inherit;transition:all 0.15s}
+.cw-ybtn.on{background:#070235;border-color:#070235;color:white}
+.cw-scroll{max-height:480px;overflow-y:auto}
+.cw-scroll::-webkit-scrollbar{width:5px}
+.cw-scroll::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:3px}
+#cw-tbl{width:100%;border-collapse:collapse;font-size:13px}
+#cw-tbl thead th{position:sticky;top:0;padding:11px 14px;text-align:right;font-weight:700;font-size:12px;white-space:nowrap;z-index:2}
+#cw-tbl thead th:first-child{text-align:left}
+#cw-tbl thead th.cp{background:#6B8E00;color:white}
+#cw-tbl thead th.ci{background:#D97A00;color:white}
+#cw-tbl thead th.ct{background:#444;color:white}
+#cw-tbl thead th.cb{background:#A0174A;color:white}
+#cw-tbl thead th.cx{background:#f2f4f7;color:#333}
+.cw-yr td{padding:10px 14px;text-align:right;border-bottom:1px solid #E2E8F0;font-weight:700;background:#F8FAFC;color:#070235;cursor:pointer}
+.cw-yr td:first-child{text-align:left}
+.cw-yr:hover td{background:#EEF2FF}
+.cw-mo{display:none}
+.cw-mo.open{display:table-row}
+.cw-mo td{padding:7px 14px;text-align:right;border-bottom:1px solid #F1F5F9;color:#475569;background:white;font-weight:400}
+.cw-mo td:first-child{text-align:left;color:#64748B;padding-left:32px}
+.cw-mo:hover td{background:#F8FAFC}
+</style>
+
+<div id="cw-amort">
+  <div class="cw-tbl-wrap">
+    <div class="cw-tbl-head">
+      <h3>Payment Schedule</h3>
+      <div class="cw-ytog">
+        <button class="cw-ybtn on" id="btn-cal" onclick="cwSetMode('cal')">Calendar Year</button>
+        <button class="cw-ybtn" id="btn-fy" onclick="cwSetMode('fy')">Financial Year</button>
+      </div>
+    </div>
+    <div class="cw-scroll">
+      <table id="cw-tbl">
+        <thead>
+          <tr>
+            <th class="cx">Year</th>
+            <th class="cp">Principal (A)</th>
+            <th class="ci">Interest (B)</th>
+            <th class="ct">Total Payment (A+B)</th>
+            <th class="cb">Balance</th>
+            <th class="cx">Loan Paid %</th>
+          </tr>
+        </thead>
+        <tbody id="cw-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var MO = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var cwMode = 'cal';
+
+  function fi(n){
+    n = Math.round(n);
+    var s = n.toString();
+    var l = s.slice(-3);
+    var r = s.slice(0,-3);
+    if(r) l = ',' + l;
+    return '₹' + r.replace(/\B(?=(\d{2})+(?!\d))/g,',') + l;
+  }
+
+  function getInputs(){
+    var pEl = document.getElementById('loanAmountInput');
+    var rEl = document.getElementById('interestRateInput');
+    var tEl = document.getElementById('tenureValueInput');
+    if(!pEl||!rEl||!tEl) return null;
+    var P = parseFloat(pEl.value.replace(/,/g,''))||0;
+    var R = parseFloat(rEl.value)||0;
+    var T = parseFloat(tEl.value)||0;
+    var N = (typeof tenureMode!=='undefined' && tenureMode==='months') ? T : T*12;
+    return {P:P, R:R, N:N};
+  }
+
+  function cwBuild(){
+    var inp = getInputs();
+    if(!inp || inp.P<=0 || inp.N<=0) return;
+    var P=inp.P, R=inp.R, N=inp.N;
+    var r = R/12/100;
+    var emi = r>0 ? P*r*Math.pow(1+r,N)/(Math.pow(1+r,N)-1) : P/N;
+
+    var bal = P;
+    var now = new Date();
+    var sY = now.getFullYear();
+    var sM = now.getMonth();
+    var years = {};
+    var order = [];
+
+    for(var m=0; m<N; m++){
+      if(bal<=0.01) break;
+      var d = new Date(sY, sM+m, 1);
+      var dY = d.getFullYear();
+      var dM = d.getMonth();
+      var fyY = cwMode==='fy' ? (dM>=3?dY:dY-1) : dY;
+      var yLbl = cwMode==='fy' ? 'FY '+fyY+'-'+String(fyY+1).slice(-2) : String(fyY);
+      var ip = bal*r;
+      var pr = Math.min(emi-ip, bal);
+      bal -= pr;
+      if(!years[yLbl]){years[yLbl]={pri:0,int:0,mos:[],lbl:yLbl};order.push(yLbl);}
+      years[yLbl].pri += pr;
+      years[yLbl].int += ip;
+      years[yLbl].mos.push({lbl:MO[dM]+' '+dY, pri:pr, int:ip, bal:Math.max(0,bal)});
+    }
+
+    var html = '';
+    var runP = 0;
+    order.forEach(function(yl,yi){
+      var yr = years[yl];
+      runP += yr.pri;
+      var pct = (runP/P*100).toFixed(2)+'%';
+      var yBal = yr.mos[yr.mos.length-1].bal;
+      var yid = 'y'+yi;
+      html += '<tr class="cw-yr" onclick="cwToggle(''+yid+'')">'
+        +'<td><span id="ic-'+yid+'" style="margin-right:6px;color:#0051d5;font-size:11px">⊞</span>'+yl+'</td>'
+        +'<td>'+fi(yr.pri)+'</td><td>'+fi(yr.int)+'</td>'
+        +'<td>'+fi(yr.pri+yr.int)+'</td><td>'+fi(Math.max(0,yBal))+'</td>'
+        +'<td>'+pct+'</td></tr>';
+      var mRunP = runP - yr.pri;
+      yr.mos.forEach(function(mo){
+        mRunP += mo.pri;
+        var mPct = (mRunP/P*100).toFixed(2)+'%';
+        html += '<tr class="cw-mo" id="mo-'+yid+'">'
+          +'<td>'+mo.lbl+'</td><td>'+fi(mo.pri)+'</td><td>'+fi(mo.int)+'</td>'
+          +'<td>'+fi(mo.pri+mo.int)+'</td><td>'+fi(mo.bal)+'</td>'
+          +'<td>'+mPct+'</td></tr>';
+      });
+    });
+    document.getElementById('cw-body').innerHTML = html;
+  }
+
+  window.cwToggle = function(yid){
+    var rows = document.querySelectorAll('#mo-'+yid);
+    var ic = document.getElementById('ic-'+yid);
+    var open = rows[0] && rows[0].classList.contains('open');
+    rows.forEach(function(r){r.classList.toggle('open',!open);});
+    if(ic) ic.textContent = open ? '⊞' : '⊟';
+  };
+
+  window.cwSetMode = function(m){
+    cwMode = m;
+    document.getElementById('btn-cal').className='cw-ybtn'+(m==='cal'?' on':'');
+    document.getElementById('btn-fy').className='cw-ybtn'+(m==='fy'?' on':'');
+    cwBuild();
+  };
+
+  // Poll every 300ms to update when sliders change
+  // Also listen to all inputs
+  function hookInputs(){
+    ['loanAmountInput','interestRateInput','tenureValueInput',
+     'loanAmountSlider','interestRateSlider','tenureSlider'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el){
+        el.addEventListener('input', function(){ setTimeout(cwBuild, 50); });
+        el.addEventListener('change', function(){ setTimeout(cwBuild, 50); });
+      }
+    });
+  }
+
+  // Init after DOM ready
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      setTimeout(function(){ cwBuild(); hookInputs(); }, 300);
+    });
+  } else {
+    setTimeout(function(){ cwBuild(); hookInputs(); }, 300);
+  }
+})();
+</script>
 </main><footer style="background:#F8FAFC;border-top:1px solid #E2E8F0;padding:32px 24px;text-align:center">
   <div style="max-width:1200px;margin:0 auto">
     <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:16px;font-size:13px">
@@ -725,214 +904,4 @@
 </footer>
 
 
-<!-- AMORTIZATION SECTION -->
-<style>
-@media print {
-  header, footer, nav { display: none !important; }
-  body { background: white !important; }
-}
-#cw-amort { margin: 0 0 40px 0; }
-#cw-amort-head {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 16px 20px; background: #f2f4f7; border-bottom: 1px solid #dde1ea;
-}
-#cw-amort-head h2 { font-size: 16px; font-weight: 700; color: #070235; margin: 0; }
-.cw-ytog { display: flex; gap: 6px; }
-.cw-ybtn {
-  padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;
-  cursor: pointer; border: 1px solid #CBD5E1; background: white; color: #475569;
-  font-family: inherit; transition: all 0.15s;
-}
-.cw-ybtn.active { background: #070235; border-color: #070235; color: white; }
-.cw-scroll { max-height: 500px; overflow-y: auto; }
-.cw-scroll::-webkit-scrollbar { width: 5px; }
-.cw-scroll::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
-#cw-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
-#cw-tbl thead th {
-  position: sticky; top: 0; padding: 12px 16px; text-align: right;
-  font-weight: 700; font-size: 12px; white-space: nowrap; z-index: 2;
-}
-#cw-tbl thead th:first-child { text-align: left; background: #f2f4f7; color: #333; }
-#cw-tbl thead th.col-p { background: #6B8E00; color: white; }
-#cw-tbl thead th.col-i { background: #D97A00; color: white; }
-#cw-tbl thead th.col-t { background: #444; color: white; }
-#cw-tbl thead th.col-b { background: #A0174A; color: white; }
-#cw-tbl thead th.col-pct { background: #f2f4f7; color: #333; }
-/* Year rows */
-.yr-row td {
-  padding: 10px 16px; text-align: right;
-  border-bottom: 1px solid #E2E8F0;
-  font-weight: 700; background: #F8FAFC; color: #070235;
-  cursor: pointer;
-}
-.yr-row td:first-child { text-align: left; }
-.yr-row:hover td { background: #EEF2FF; }
-/* Month rows */
-.mo-row { display: none; }
-.mo-row.open { display: table-row; }
-.mo-row td {
-  padding: 8px 16px; text-align: right;
-  border-bottom: 1px solid #F1F5F9;
-  color: #475569; background: white; font-weight: 400;
-}
-.mo-row td:first-child { text-align: left; color: #64748B; padding-left: 32px; }
-.mo-row:hover td { background: #F8FAFC; }
-.expand-icon { font-size: 11px; margin-right: 6px; color: #0051d5; }
-</style>
-
-<section id="cw-amort" class="max-w-7xl mx-auto px-6 lg:px-12">
-  <div style="border:1px solid #dde1ea;border-radius:12px;overflow:hidden">
-    <div id="cw-amort-head">
-      <h2>Payment Schedule</h2>
-      <div class="cw-ytog">
-        <button class="cw-ybtn active" id="btn-cal" onclick="setAmortMode('cal')">Calendar Year</button>
-        <button class="cw-ybtn" id="btn-fy" onclick="setAmortMode('fy')">Financial Year</button>
-      </div>
-    </div>
-    <div class="cw-scroll">
-      <table id="cw-tbl">
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th class="col-p">Principal (A)</th>
-            <th class="col-i">Interest (B)</th>
-            <th class="col-t">Total Payment (A+B)</th>
-            <th class="col-b">Balance</th>
-            <th class="col-pct">Loan Paid To Date</th>
-          </tr>
-        </thead>
-        <tbody id="cw-tbody"></tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<script>
-var cwAmortMode = 'cal';
-var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-function fmtIN(n) {
-  if (isNaN(n) || n === null) return '0';
-  n = Math.round(n);
-  var x = n.toString();
-  var last3 = x.slice(-3);
-  var rest = x.slice(0, -3);
-  if (rest) last3 = ',' + last3;
-  return '₹' + rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + last3;
-}
-
-function buildCwAmort() {
-  var principal = parseFormattedNumber(document.getElementById('loanAmountInput').value);
-  var annualRate = parseFloat(document.getElementById('interestRateInput').value) || 0;
-  var tenureVal = parseFloat(document.getElementById('tenureValueInput').value) || 1;
-  var numberOfMonths = (typeof tenureMode !== 'undefined' && tenureMode === 'months') ? tenureVal : tenureVal * 12;
-  var monthlyRate = annualRate / 12 / 100;
-  var emi = monthlyRate > 0
-    ? (principal * monthlyRate * Math.pow(1+monthlyRate,numberOfMonths)) / (Math.pow(1+monthlyRate,numberOfMonths)-1)
-    : principal / numberOfMonths;
-
-  var bal = principal;
-  var totalPaid = 0;
-  var rows = '';
-  var curDate = new Date();
-  var curMonth = curDate.getMonth(); // 0-indexed
-  var curYear = curDate.getFullYear();
-  var mIdx = 0;
-
-  // Group by year
-  var years = {};
-  var yearOrder = [];
-
-  for (var m = 0; m < numberOfMonths; m++) {
-    if (bal <= 0.01) break;
-    var mDate = new Date(curYear, curMonth + m, 1);
-    var mY = mDate.getFullYear();
-    var mM = mDate.getMonth();
-
-    var fy = cwAmortMode === 'fy'
-      ? (mM >= 3 ? mY : mY - 1)
-      : mY;
-    var fyLabel = cwAmortMode === 'fy'
-      ? 'FY ' + fy + '-' + String(fy+1).slice(-2)
-      : String(fy);
-
-    var ip = bal * monthlyRate;
-    var pr = Math.min(emi - ip, bal);
-    bal -= pr;
-    totalPaid += pr;
-
-    if (!years[fyLabel]) {
-      years[fyLabel] = { pri: 0, int: 0, months: [], label: fyLabel };
-      yearOrder.push(fyLabel);
-    }
-    years[fyLabel].pri += pr;
-    years[fyLabel].int += ip;
-    years[fyLabel].months.push({
-      label: MONTHS[mM] + ' ' + mY,
-      pri: pr, int: ip, bal: bal
-    });
-  }
-
-  // Running paid
-  var runPaid = 0;
-  yearOrder.forEach(function(yLabel, yi) {
-    var yr = years[yLabel];
-    runPaid += yr.pri;
-    var paidPct = ((runPaid / principal) * 100).toFixed(2) + '%';
-    var yBal = yr.months[yr.months.length-1].bal;
-    var yid = 'yr-' + yi;
-
-    rows += '<tr class="yr-row" onclick="toggleYear('' + yid + '')">'
-      + '<td><span class="expand-icon" id="ico-' + yid + '">⊞</span>' + yLabel + '</td>'
-      + '<td>' + fmtIN(yr.pri) + '</td>'
-      + '<td>' + fmtIN(yr.int) + '</td>'
-      + '<td>' + fmtIN(yr.pri + yr.int) + '</td>'
-      + '<td>' + fmtIN(Math.max(0, yBal)) + '</td>'
-      + '<td>' + paidPct + '</td>'
-      + '</tr>';
-
-    var moRunPaid = runPaid - yr.pri;
-    yr.months.forEach(function(mo) {
-      moRunPaid += mo.pri;
-      var moPct = ((moRunPaid / principal) * 100).toFixed(2) + '%';
-      rows += '<tr class="mo-row" id="mo-' + yid + '">'
-        + '<td>' + mo.label + '</td>'
-        + '<td>' + fmtIN(mo.pri) + '</td>'
-        + '<td>' + fmtIN(mo.int) + '</td>'
-        + '<td>' + fmtIN(mo.pri + mo.int) + '</td>'
-        + '<td>' + fmtIN(Math.max(0, mo.bal)) + '</td>'
-        + '<td>' + moPct + '</td>'
-        + '</tr>';
-    });
-  });
-
-  document.getElementById('cw-tbody').innerHTML = rows;
-}
-
-function toggleYear(yid) {
-  var rows = document.querySelectorAll('#mo-' + yid);
-  var ico = document.getElementById('ico-' + yid);
-  var isOpen = rows[0] && rows[0].classList.contains('open');
-  rows.forEach(function(r) { r.classList.toggle('open', !isOpen); });
-  if (ico) ico.textContent = isOpen ? '⊞' : '⊟';
-}
-
-function setAmortMode(mode) {
-  cwAmortMode = mode;
-  document.getElementById('btn-cal').className = 'cw-ybtn' + (mode==='cal'?' active':'');
-  document.getElementById('btn-fy').className = 'cw-ybtn' + (mode==='fy'?' active':'');
-  buildCwAmort();
-}
-
-// Hook into calculateEMI
-var _origEMI = calculateEMI;
-calculateEMI = function() {
-  _origEMI();
-  if (document.getElementById('cw-tbody')) buildCwAmort();
-};
-
-document.addEventListener('DOMContentLoaded', function() {
-  buildCwAmort();
-});
-</script>
 </body></html>
