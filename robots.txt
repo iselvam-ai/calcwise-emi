@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://calcwise-emi.vercel.app/sitemap.xml
+Sitemap: https://emi.nidspace.com/sitemap.xml
