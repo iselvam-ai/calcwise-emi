@@ -713,56 +713,57 @@
 </script>
 
 
-<!-- CALCWISE AMORTIZATION -->
+
+<!-- CALCWISE AMORTIZATION TABLE -->
 <style>
-@media print { header,footer,nav,.no-print{display:none!important} }
-#cw-amort{padding:0 24px 48px;max-width:1200px;margin:0 auto}
-.cw-tbl-wrap{border:1px solid #dde1ea;border-radius:12px;overflow:hidden}
-.cw-tbl-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#f2f4f7;border-bottom:1px solid #dde1ea}
-.cw-tbl-head h3{font-size:16px;font-weight:700;color:#070235;margin:0}
-.cw-ytog{display:flex;gap:6px}
-.cw-ybtn{padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #CBD5E1;background:white;color:#475569;font-family:inherit;transition:all 0.15s}
-.cw-ybtn.on{background:#070235;border-color:#070235;color:white}
-.cw-scroll{max-height:480px;overflow-y:auto}
-.cw-scroll::-webkit-scrollbar{width:5px}
-.cw-scroll::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:3px}
+@media print{header,footer,nav,.no-print{display:none!important}}
+#cw-amort{padding:24px;max-width:1180px;margin:0 auto 48px}
+.cw-wrap{border:1px solid #dde1ea;border-radius:12px;overflow:hidden}
+.cw-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:#f2f4f7;border-bottom:1px solid #dde1ea}
+.cw-bar h3{font-size:15px;font-weight:700;color:#070235;margin:0}
+.cw-btns{display:flex;gap:6px}
+.cw-btn{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid #CBD5E1;background:white;color:#475569;font-family:inherit}
+.cw-btn.on{background:#070235;border-color:#070235;color:white}
+.cw-scr{max-height:480px;overflow-y:auto}
+.cw-scr::-webkit-scrollbar{width:4px}
+.cw-scr::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
 #cw-tbl{width:100%;border-collapse:collapse;font-size:13px}
-#cw-tbl thead th{position:sticky;top:0;padding:11px 14px;text-align:right;font-weight:700;font-size:12px;white-space:nowrap;z-index:2}
-#cw-tbl thead th:first-child{text-align:left}
-#cw-tbl thead th.cp{background:#6B8E00;color:white}
-#cw-tbl thead th.ci{background:#D97A00;color:white}
-#cw-tbl thead th.ct{background:#444;color:white}
-#cw-tbl thead th.cb{background:#A0174A;color:white}
-#cw-tbl thead th.cx{background:#f2f4f7;color:#333}
-.cw-yr td{padding:10px 14px;text-align:right;border-bottom:1px solid #E2E8F0;font-weight:700;background:#F8FAFC;color:#070235;cursor:pointer}
-.cw-yr td:first-child{text-align:left}
-.cw-yr:hover td{background:#EEF2FF}
-.cw-mo{display:none}
-.cw-mo.open{display:table-row}
-.cw-mo td{padding:7px 14px;text-align:right;border-bottom:1px solid #F1F5F9;color:#475569;background:white;font-weight:400}
-.cw-mo td:first-child{text-align:left;color:#64748B;padding-left:32px}
-.cw-mo:hover td{background:#F8FAFC}
+#cw-tbl th{position:sticky;top:0;padding:10px 14px;text-align:right;font-size:11px;font-weight:700;white-space:nowrap;z-index:2}
+#cw-tbl th:first-child{text-align:left;background:#f2f4f7;color:#333}
+.th-p{background:#6B8E00;color:white}
+.th-i{background:#D97A00;color:white}
+.th-t{background:#444;color:white}
+.th-b{background:#A0174A;color:white}
+.th-x{background:#f2f4f7;color:#333}
+.yr td{padding:10px 14px;text-align:right;border-bottom:1px solid #e2e8f0;font-weight:700;background:#f8fafc;color:#070235;cursor:pointer}
+.yr td:first-child{text-align:left}
+.yr:hover td{background:#eef2ff}
+.mo{display:none}
+.mo.op{display:table-row}
+.mo td{padding:7px 14px;text-align:right;border-bottom:1px solid #f1f5f9;color:#475569;background:white}
+.mo td:first-child{text-align:left;color:#64748b;padding-left:36px}
+.mo:hover td{background:#f8fafc}
 </style>
 
 <div id="cw-amort">
-  <div class="cw-tbl-wrap">
-    <div class="cw-tbl-head">
+  <div class="cw-wrap">
+    <div class="cw-bar">
       <h3>Payment Schedule</h3>
-      <div class="cw-ytog">
-        <button class="cw-ybtn on" id="btn-cal" onclick="cwSetMode('cal')">Calendar Year</button>
-        <button class="cw-ybtn" id="btn-fy" onclick="cwSetMode('fy')">Financial Year</button>
+      <div class="cw-btns">
+        <button class="cw-btn on" id="cw-cal" onclick="cwMode('cal')">Calendar Year</button>
+        <button class="cw-btn" id="cw-fy" onclick="cwMode('fy')">Financial Year</button>
       </div>
     </div>
-    <div class="cw-scroll">
+    <div class="cw-scr">
       <table id="cw-tbl">
         <thead>
           <tr>
-            <th class="cx">Year</th>
-            <th class="cp">Principal (A)</th>
-            <th class="ci">Interest (B)</th>
-            <th class="ct">Total Payment (A+B)</th>
-            <th class="cb">Balance</th>
-            <th class="cx">Loan Paid %</th>
+            <th class="th-x">Year</th>
+            <th class="th-p">Principal (A)</th>
+            <th class="th-i">Interest (B)</th>
+            <th class="th-t">Total Payment (A+B)</th>
+            <th class="th-b">Balance</th>
+            <th class="th-x">Loan Paid %</th>
           </tr>
         </thead>
         <tbody id="cw-body"></tbody>
@@ -773,124 +774,120 @@
 
 <script>
 (function(){
-  var MO = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var cwMode = 'cal';
+  var MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var _mode='cal';
 
   function fi(n){
-    n = Math.round(n);
-    var s = n.toString();
-    var l = s.slice(-3);
-    var r = s.slice(0,-3);
-    if(r) l = ',' + l;
-    return '₹' + r.replace(/\B(?=(\d{2})+(?!\d))/g,',') + l;
-  }
-
-  function getInputs(){
-    var pEl = document.getElementById('loanAmountInput');
-    var rEl = document.getElementById('interestRateInput');
-    var tEl = document.getElementById('tenureValueInput');
-    if(!pEl||!rEl||!tEl) return null;
-    var P = parseFloat(pEl.value.replace(/,/g,''))||0;
-    var R = parseFloat(rEl.value)||0;
-    var T = parseFloat(tEl.value)||0;
-    var N = (typeof tenureMode!=='undefined' && tenureMode==='months') ? T : T*12;
-    return {P:P, R:R, N:N};
+    n=Math.round(Math.abs(n));
+    var s=n.toString();
+    if(s.length<=3) return '\u20b9'+s;
+    var l=s.slice(-3);
+    var r=s.slice(0,-3);
+    var res='';
+    while(r.length>2){res=','+r.slice(-2)+res;r=r.slice(0,-2);}
+    return '\u20b9'+r+res+','+l;
   }
 
   function cwBuild(){
-    var inp = getInputs();
-    if(!inp || inp.P<=0 || inp.N<=0) return;
-    var P=inp.P, R=inp.R, N=inp.N;
-    var r = R/12/100;
-    var emi = r>0 ? P*r*Math.pow(1+r,N)/(Math.pow(1+r,N)-1) : P/N;
+    try{
+      // Use exact same logic as calculateEMI in the page
+      var pEl=document.getElementById('loanAmountInput');
+      var rEl=document.getElementById('interestRateInput');
+      var tEl=document.getElementById('tenureValueInput');
+      if(!pEl||!rEl||!tEl){console.log('CW: inputs not found');return;}
 
-    var bal = P;
-    var now = new Date();
-    var sY = now.getFullYear();
-    var sM = now.getMonth();
-    var years = {};
-    var order = [];
+      var P=parseFormattedNumber(pEl.value);
+      var R=parseFloat(rEl.value)||0;
+      var T=parseFloat(tEl.value)||0;
+      // tenureMode uses 'years' or 'months' as per page code
+      var N=( typeof tenureMode!=='undefined' && tenureMode==='months') ? T : T*12;
+      if(P<=0||N<=0){console.log('CW: invalid P or N',P,N);return;}
 
-    for(var m=0; m<N; m++){
-      if(bal<=0.01) break;
-      var d = new Date(sY, sM+m, 1);
-      var dY = d.getFullYear();
-      var dM = d.getMonth();
-      var fyY = cwMode==='fy' ? (dM>=3?dY:dY-1) : dY;
-      var yLbl = cwMode==='fy' ? 'FY '+fyY+'-'+String(fyY+1).slice(-2) : String(fyY);
-      var ip = bal*r;
-      var pr = Math.min(emi-ip, bal);
-      bal -= pr;
-      if(!years[yLbl]){years[yLbl]={pri:0,int:0,mos:[],lbl:yLbl};order.push(yLbl);}
-      years[yLbl].pri += pr;
-      years[yLbl].int += ip;
-      years[yLbl].mos.push({lbl:MO[dM]+' '+dY, pri:pr, int:ip, bal:Math.max(0,bal)});
-    }
+      var r=R/12/100;
+      var emi=r>0 ? P*r*Math.pow(1+r,N)/(Math.pow(1+r,N)-1) : P/N;
 
-    var html = '';
-    var runP = 0;
-    order.forEach(function(yl,yi){
-      var yr = years[yl];
-      runP += yr.pri;
-      var pct = (runP/P*100).toFixed(2)+'%';
-      var yBal = yr.mos[yr.mos.length-1].bal;
-      var yid = 'y'+yi;
-      html += '<tr class="cw-yr" onclick="cwToggle(''+yid+'')">'
-        +'<td><span id="ic-'+yid+'" style="margin-right:6px;color:#0051d5;font-size:11px">⊞</span>'+yl+'</td>'
-        +'<td>'+fi(yr.pri)+'</td><td>'+fi(yr.int)+'</td>'
-        +'<td>'+fi(yr.pri+yr.int)+'</td><td>'+fi(Math.max(0,yBal))+'</td>'
-        +'<td>'+pct+'</td></tr>';
-      var mRunP = runP - yr.pri;
-      yr.mos.forEach(function(mo){
-        mRunP += mo.pri;
-        var mPct = (mRunP/P*100).toFixed(2)+'%';
-        html += '<tr class="cw-mo" id="mo-'+yid+'">'
-          +'<td>'+mo.lbl+'</td><td>'+fi(mo.pri)+'</td><td>'+fi(mo.int)+'</td>'
-          +'<td>'+fi(mo.pri+mo.int)+'</td><td>'+fi(mo.bal)+'</td>'
-          +'<td>'+mPct+'</td></tr>';
+      var bal=P;
+      var now=new Date();
+      var sY=now.getFullYear(), sM=now.getMonth();
+      var yrs={}, ord=[];
+
+      for(var m=0;m<N;m++){
+        if(bal<=0.01)break;
+        var d=new Date(sY,sM+m,1);
+        var dY=d.getFullYear(), dM=d.getMonth();
+        var fY=_mode==='fy'?(dM>=3?dY:dY-1):dY;
+        var yL=_mode==='fy'?'FY '+fY+'-'+String(fY+1).slice(-2):String(fY);
+        var ip=bal*r, pr=Math.min(emi-ip,bal);
+        bal-=pr;
+        if(!yrs[yL]){yrs[yL]={p:0,i:0,ms:[]};ord.push(yL);}
+        yrs[yL].p+=pr; yrs[yL].i+=ip;
+        yrs[yL].ms.push({l:MO[dM]+' '+dY,p:pr,i:ip,b:Math.max(0,bal)});
+      }
+
+      var html='', rP=0;
+      ord.forEach(function(yl,yi){
+        var yr=yrs[yl];
+        rP+=yr.p;
+        var pct=(rP/P*100).toFixed(2)+'%';
+        var yB=yr.ms[yr.ms.length-1].b;
+        var id='y'+yi;
+        html+='<tr class="yr" onclick="cwTog(\''+id+'\')">'
+          +'<td><span id="ic'+id+'" style="color:#0051d5;margin-right:5px;font-size:11px">\u229e</span>'+yl+'</td>'
+          +'<td>'+fi(yr.p)+'</td><td>'+fi(yr.i)+'</td>'
+          +'<td>'+fi(yr.p+yr.i)+'</td><td>'+fi(yB)+'</td>'
+          +'<td>'+pct+'</td></tr>';
+        var mP=rP-yr.p;
+        yr.ms.forEach(function(mo){
+          mP+=mo.p;
+          html+='<tr class="mo" id="mo'+id+'">'
+            +'<td>'+mo.l+'</td><td>'+fi(mo.p)+'</td><td>'+fi(mo.i)+'</td>'
+            +'<td>'+fi(mo.p+mo.i)+'</td><td>'+fi(mo.b)+'</td>'
+            +'<td>'+(mP/P*100).toFixed(2)+'%</td></tr>';
+        });
       });
-    });
-    document.getElementById('cw-body').innerHTML = html;
+
+      document.getElementById('cw-body').innerHTML=html;
+      console.log('CW: built '+ord.length+' years');
+    }catch(e){console.error('CW amort error:',e);}
   }
 
-  window.cwToggle = function(yid){
-    var rows = document.querySelectorAll('#mo-'+yid);
-    var ic = document.getElementById('ic-'+yid);
-    var open = rows[0] && rows[0].classList.contains('open');
-    rows.forEach(function(r){r.classList.toggle('open',!open);});
-    if(ic) ic.textContent = open ? '⊞' : '⊟';
+  window.cwTog=function(id){
+    var rs=document.querySelectorAll('#mo'+id);
+    var ic=document.getElementById('ic'+id);
+    var op=rs[0]&&rs[0].classList.contains('op');
+    rs.forEach(function(r){r.classList.toggle('op',!op);});
+    if(ic)ic.textContent=op?'\u229e':'\u229f';
   };
 
-  window.cwSetMode = function(m){
-    cwMode = m;
-    document.getElementById('btn-cal').className='cw-ybtn'+(m==='cal'?' on':'');
-    document.getElementById('btn-fy').className='cw-ybtn'+(m==='fy'?' on':'');
+  window.cwMode=function(m){
+    _mode=m;
+    document.getElementById('cw-cal').className='cw-btn'+(m==='cal'?' on':'');
+    document.getElementById('cw-fy').className='cw-btn'+(m==='fy'?' on':'');
     cwBuild();
   };
 
-  // Poll every 300ms to update when sliders change
-  // Also listen to all inputs
-  function hookInputs(){
-    ['loanAmountInput','interestRateInput','tenureValueInput',
-     'loanAmountSlider','interestRateSlider','tenureSlider'].forEach(function(id){
-      var el = document.getElementById(id);
-      if(el){
-        el.addEventListener('input', function(){ setTimeout(cwBuild, 50); });
-        el.addEventListener('change', function(){ setTimeout(cwBuild, 50); });
-      }
+  function hookAll(){
+    ['loanAmountInput','loanAmountSlider','interestRateInput',
+     'interestRateSlider','tenureValueInput','tenureSlider'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el){el.addEventListener('input',function(){setTimeout(cwBuild,100);});}
     });
+    // Also watch for any button clicks that change tenure mode
+    document.querySelectorAll('[onclick*="tenure"],[onclick*="Tenure"],[onclick*="mode"]').forEach(function(el){
+      el.addEventListener('click',function(){setTimeout(cwBuild,200);});
+    });
+    cwBuild();
+    console.log('CW: hooks attached');
   }
 
-  // Init after DOM ready
   if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', function(){
-      setTimeout(function(){ cwBuild(); hookInputs(); }, 300);
-    });
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(hookAll,500);});
   } else {
-    setTimeout(function(){ cwBuild(); hookInputs(); }, 300);
+    setTimeout(hookAll,500);
   }
 })();
 </script>
+<!-- END CALCWISE AMORTIZATION TABLE -->
 </main><footer style="background:#F8FAFC;border-top:1px solid #E2E8F0;padding:32px 24px;text-align:center">
   <div style="max-width:1200px;margin:0 auto">
     <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:16px;font-size:13px">
