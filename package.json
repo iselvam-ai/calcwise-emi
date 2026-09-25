@@ -1,0 +1,12 @@
+{
+  "name": "calcwise-emi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CalcWise – static EMI, loan prepayment and loan comparison calculators (no runtime dependencies).",
+  "scripts": {
+    "build:css": "npx --yes tailwindcss@3.4.17 -c tailwind.config.js -i src/input.css -o assets/css/site.css --minify",
+    "sync": "node scripts/sync-partials.js",
+    "release": "npm run build:css && npm run sync",
+    "test": "node tests/calc.test.js"
+  }
+}
