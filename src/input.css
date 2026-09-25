@@ -9,6 +9,13 @@ html { -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; }
 body { overscroll-behavior-y: none; }
 :focus-visible { outline: 2px solid #0051d5; outline-offset: 2px; }
 input[type="range"] { accent-color: #0051d5; }
+/* Touch targets: sliders keep their thin native track but get a 24px-tall hit
+ * area; negative margins keep the original layout spacing. */
+input[type="range"] { height: 24px; margin-top: -9px; margin-bottom: -9px; touch-action: pan-y; }
+.tenure-preset { min-height: 32px; min-width: 40px; touch-action: manipulation; }
+/* Comparison inputs fill their pill so the whole pill is tappable. */
+#inputs input[type="text"] { min-height: 36px; margin-top: -6px; margin-bottom: -6px; }
+nav[aria-label="Breadcrumb"] a, .site-footer li a { display: inline-block; padding-top: 4px; padding-bottom: 4px; }
 [hidden] { display: none !important; }
 
 /* Material Symbols: reserve space so icon ligature text never flashes */

@@ -44,5 +44,7 @@ Example interest rates are shown as neutral **illustrative** chips (8%, 8.5%, 9%
 
 * EMI = P × r × (1+r)^n ÷ ((1+r)^n − 1), r = annual rate ÷ 12 ÷ 100.
 * Schedules are computed with unrounded values and displayed rounded to the nearest rupee; the final EMI is adjusted so the balance ends at exactly zero.
-* Prepayments are applied after that month's EMI. "Reduce tenure" keeps the EMI; "Reduce EMI" recomputes the EMI over the remaining original tenure.
+* Year-wise tables round cumulatively (each year = rounded running total at its end − rounded running total at its start), so year rows always add up exactly to the displayed loan totals. Individual month rows are rounded independently and may differ by ₹1.
+* Prepayments are applied after that month's EMI. "Reduce tenure" keeps the EMI; "Reduce EMI" recomputes the EMI over the remaining original tenure after every prepayment. The UI leads with the EMI after the *first* prepayment and also states the EMI after the last one (for recurring prepayments the EMI keeps falling).
+* Shared links are validated field by field; invalid or out-of-range values are ignored (defaults shown) and the user is told so.
 * The comparison page's effective annual rate treats fees (+GST) as reducing the amount received and solves for the rate that equates the EMIs with that amount.

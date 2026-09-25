@@ -158,7 +158,7 @@
     var baseEmi = emi(P, R, n);
     if (!isNum(baseEmi)) return null;
     var r = R / 1200, start = opts.startDate || firstOfNextMonth(), prepay = opts.prepay;
-    var payment = baseEmi, bal = P, rows = [];
+    var payment = baseEmi, bal = P, rows = [], firstRevisedEmi = null, emiRevisions = 0;
     var tInt = 0, tPrin = 0, tPre = 0, tEmi = 0;
 
     for (var m = 1; m <= n && bal > EPS; m++) {
@@ -177,13 +177,20 @@
         interest: interest, principal: principalPart, prepayment: extra, closing: bal
       });
       tInt += interest; tPrin += principalPart; tPre += extra; tEmi += pay;
-      if (extra > 0 && bal > 0 && prepay.mode === 'emi' && m < n) payment = emi(bal, R, n - m);
+      if (extra > 0 && bal > 0 && prepay.mode === 'emi' && m < n) {
+        payment = emi(bal, R, n - m);
+        if (firstRevisedEmi === null) firstRevisedEmi = payment;
+        emiRevisions++;
+      }
     }
 
     return {
       rows: rows,
       emi: baseEmi,
       lastEmi: payment,
+      // 'emi' mode only: EMI after the first prepayment, and how many times the EMI was recomputed.
+      firstRevisedEmi: firstRevisedEmi === null ? payment : firstRevisedEmi,
+      emiRevisions: emiRevisions,
       months: rows.length,
       principal: P,
       totalInterest: tInt,
@@ -229,8 +236,28 @@
     return (lo + hi) / 2 * 1200;
   }
 
-  /** Group schedule rows by calendar year or Indian financial year. */
+  /**
+   * Group schedule rows by calendar year or Indian financial year.
+   * Year totals are rounded to whole rupees cumulatively (each year = rounded
+   * running total at its end − rounded running total at its start), so the
+   * displayed year rows always add up exactly to the rounded loan totals.
+   */
   function groupByYear(rows, basis, principal) {
+    var groups = rawGroupByYear(rows, basis, principal);
+    var run = { principal: 0, interest: 0, prepayment: 0 }, shown = { principal: 0, interest: 0, prepayment: 0 };
+    groups.forEach(function (g) {
+      ['principal', 'interest', 'prepayment'].forEach(function (k) {
+        run[k] += g[k];
+        var upTo = Math.round(run[k]);
+        g[k] = upTo - shown[k];
+        shown[k] = upTo;
+      });
+      g.paid = g.principal + g.interest + g.prepayment;
+    });
+    return groups;
+  }
+
+  function rawGroupByYear(rows, basis, principal) {
     var groups = [], map = {}, cumPaid = 0;
     rows.forEach(function (row) {
       var label = yearLabel(row.date, basis), g = map[label];
@@ -270,7 +297,7 @@
       blank: 'Please enter a loan amount.',
       invalid: 'Please enter a valid loan amount (numbers only).',
       positive: 'Loan amount must be greater than zero.',
-      range: function (l) { return 'Loan amount must be between ' + formatINR(l.min) + ' and ' + formatINR(l.max) + ' (₹10 crore).'; }
+      range: function (l) { return 'Loan amount must be between ' + formatINR(l.min) + ' and ' + formatINR(l.max) + ' (' + formatShortINR(l.max).replace('.00 Cr', ' crore') + ').'; }
     },
     rate: {
       limits: L.rate,
@@ -534,11 +561,21 @@
     try { return new URLSearchParams(window.location.search); } catch (e) { return { get: function () { return null; }, has: function () { return false; } }; }
   }
   /** Validated URL parameter → value, or undefined when missing / invalid. */
+  var ignoredParams = [];
   function param(params, key, kind, limits) {
     var raw = params.get(key);
-    if (raw == null || raw.length > 20) return undefined;
-    var res = validate(kind, raw, limits);
-    return res.error ? undefined : res.value;
+    if (raw == null) return undefined;
+    var res = raw.length > 20 ? { error: true } : validate(kind, raw, limits);
+    if (res.error) { ignoredParams.push(key); return undefined; }
+    return res.value;
+  }
+  /** Record a non-numeric link value (e.g. an unknown option) that was ignored. */
+  function ignoreParam(key) { ignoredParams.push(key); }
+  /** After reading a shared link: tell the user if some values could not be used. */
+  function reportIgnoredParams() {
+    if (!ignoredParams.length) return;
+    toast('Some values in this link were missing or invalid, so default values are shown for them.');
+    ignoredParams = [];
   }
   function shareUrl(values) {
     var u = new URL(window.location.pathname, window.location.origin);
@@ -666,7 +703,7 @@
   function fillConfigText() {
     var map = {
       amountMin: formatShortINR(L.amount.min).replace('.00', ''),
-      amountMax: '₹10 Cr',
+      amountMax: formatShortINR(L.amount.max).replace('.00', ''),
       rateRange: L.rate.min + '% – ' + L.rate.max + '%',
       rateMin: L.rate.min + '%',
       rateMax: L.rate.max + '%',
@@ -709,7 +746,8 @@
     $: $, $$: $$, el: el, setText: setText, showError: showError,
     amountToPos: amountToPos, posToAmount: posToAmount, SLIDER_STEPS: SLIDER_STEPS,
     Field: Field, ToggleGroup: ToggleGroup, TenureField: TenureField, setDonut: setDonut,
-    toast: toast, getParams: getParams, param: param, shareUrl: shareUrl, shareLink: shareLink,
+    toast: toast, getParams: getParams, param: param, ignoreParam: ignoreParam, reportIgnoredParams: reportIgnoredParams,
+    shareUrl: shareUrl, shareLink: shareLink,
     copyText: copyText, downloadCSV: downloadCSV, money2: money2, printReport: printReport,
     renderRateChips: renderRateChips, onReady: onReady
   };

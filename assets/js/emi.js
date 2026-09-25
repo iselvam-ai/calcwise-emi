@@ -170,13 +170,12 @@
         } else {
           var saved = base.totalInterest - plan.totalInterest;
           var lines = [];
-          if (st.prepay.mode === 'tenure') {
+          if (st.prepay.mode === 'tenure' || plan.months < base.months) {
             var cut = base.months - plan.months;
-            lines.push('Loan closes after ' + plan.months + ' EMIs (' + CW.monthLabel(plan.endDate) + ') instead of ' + base.months +
+            lines.push('Loan closes after ' + CW.plural(plan.months, 'EMI', 'EMIs') + ' (' + CW.monthLabel(plan.endDate) + ') instead of ' + base.months +
               (cut > 0 ? ' — ' + CW.formatTenure(cut) + ' earlier.' : '.'));
-          } else {
-            lines.push('EMI falls from ' + fmt(base.emi) + ' to ' + fmt(plan.lastEmi) + ' after the last prepayment; tenure stays ' + CW.formatTenure(base.months) + '.');
           }
+          if (st.prepay.mode === 'emi' && plan.emiRevisions > 0) lines.push(emiChangeText(base, plan));
           lines.push('Total interest ' + fmt(plan.totalInterest) + ' instead of ' + fmt(base.totalInterest) + ' — interest saved: ' + fmt(saved) + '.');
           lines.push('Total prepaid: ' + fmt(plan.totalPrepaid) + '.');
           summary.textContent = lines.join(' ');
@@ -191,6 +190,13 @@
       } else {
         hint.textContent = 'Month 12 = your 12th EMI.';
       }
+    }
+
+    // "Reduce EMI" mode: the EMI is recalculated after every prepayment.
+    function emiChangeText(base, plan) {
+      var t = 'EMI falls from ' + fmt(base.emi) + ' to ' + fmt(plan.firstRevisedEmi) + ' after the first prepayment';
+      if (plan.emiRevisions > 1) t += ' and is recalculated after each later prepayment (' + fmt(plan.lastEmi) + ' after the last one)';
+      return t + '; the loan still ends in ' + CW.monthLabel(plan.endDate) + '.';
     }
 
     function renderEmpty() {
@@ -307,6 +313,10 @@
         ['Total amount payable', fmt(plan.totalPaid)],
         ['Number of EMIs', String(plan.months) + ' (last: ' + CW.monthLabel(plan.endDate) + ')']
       ];
+      if (st.prepay && st.prepay.mode === 'emi' && plan.emiRevisions > 0) {
+        results.push(['EMI after first prepayment', fmt(plan.firstRevisedEmi)]);
+        if (plan.emiRevisions > 1) results.push(['EMI after last prepayment', fmt(plan.lastEmi)]);
+      }
       if (st.prepay) results.push(['Interest saved by prepayment', fmt(base.totalInterest - plan.totalInterest)]);
       if (CW.isNum(st.fee) && st.fee > 0) results.push(['Total cost incl. fees', fmt(plan.totalPaid + st.fee + st.gst)]);
       var hasPrepay = plan.totalPrepaid > 0;
@@ -384,6 +394,7 @@
       if ((v = CW.param(p, 'amount', 'amount')) !== undefined) amount.set(v);
       if ((v = CW.param(p, 'rate', 'rate')) !== undefined) rate.set(v);
       var unit = p.get('unit') === 'months' ? 'months' : 'years';
+      if (p.has('unit') && ['years', 'months'].indexOf(p.get('unit')) < 0) CW.ignoreParam('unit');
       if ((v = CW.param(p, 'tenure', unit)) !== undefined) {
         if (unit === 'years') tenure.setMonths(v * 12);
         else { tenure.setUnit('months', false); tenure.field.set(v); }
@@ -392,14 +403,19 @@
       if (p.get('gst') === '0') { gstCheck.checked = false; advanced = true; }
       var start = CW.parseMonthValue(p.get('start'));
       if (start) startInput.value = CW.toMonthValue(start);
+      else if (p.has('start')) CW.ignoreParam('start');
       var pt = p.get('ptype');
       if (PREPAY_TYPES.indexOf(pt) > 0) {
         prepayType.value = pt; advanced = true;
         if (p.get('pmode') === 'emi') prepayMode.value = 'emi';
+        else if (p.has('pmode') && p.get('pmode') !== 'tenure') CW.ignoreParam('pmode');
         if ((v = CW.param(p, 'pamt', 'prepay')) !== undefined) prepayAmount.set(v);
         if ((v = CW.param(p, 'pmonth', 'month')) !== undefined) prepayMonth.set(v);
+      } else if (p.has('ptype') && pt !== 'none') {
+        CW.ignoreParam('ptype');
       }
       if (advanced) setDrawer(true);
+      CW.reportIgnoredParams();
     })();
 
     syncPrepayUi();

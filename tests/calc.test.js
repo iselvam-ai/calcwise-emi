@@ -139,6 +139,37 @@ check('short L', CW.formatShortINR(2500000) === '₹25.00 L');
 check('short Cr', CW.formatShortINR(123000000) === '₹12.30 Cr');
 check('tenure fmt', CW.formatTenure(245) === '20 yrs 5 mos' && CW.formatTenure(8) === '8 mos' && CW.formatTenure(12) === '1 yr');
 
+// Year rows (rounded to rupees) must add up exactly to the rounded loan totals.
+for (const c of cases) {
+  for (const basis of ['cal', 'fy']) {
+    for (const prepay of [undefined, { type: 'yearly', amount: 100000, startMonth: 12, mode: 'tenure' }]) {
+      const s = CW.amortize({ principal: c.P, annualRate: c.R, months: c.n, startDate: new Date(2026, 9, 1), prepay });
+      const gy = CW.groupByYear(s.rows, basis, c.P);
+      const sum = k => gy.reduce((t, x) => t + x[k], 0);
+      const tag = c.name + ' ' + basis + (prepay ? ' +prepay' : '');
+      check(tag + ' year interest sums to total', sum('interest') === Math.round(s.totalInterest), [sum('interest'), Math.round(s.totalInterest)]);
+      check(tag + ' year principal+prepay sums to P', sum('principal') + sum('prepayment') === Math.round(c.P), sum('principal') + sum('prepayment'));
+      check(tag + ' year paid sums to total paid', sum('paid') === Math.round(s.totalPaid), [sum('paid'), Math.round(s.totalPaid)]);
+      check(tag + ' year values are whole rupees', gy.every(x => Number.isInteger(x.principal) && Number.isInteger(x.interest) && x.interest >= 0 && x.principal >= 0));
+    }
+  }
+}
+
+// Reduce-EMI mode exposes the EMI after the first prepayment as well as after the last one.
+const re1 = CW.amortize({ principal: 5000000, annualRate: 8.5, months: 240, prepay: { type: 'onetime', amount: 500000, startMonth: 12, mode: 'emi' } });
+check('onetime emi: one revision', re1.emiRevisions === 1 && near(re1.firstRevisedEmi, re1.lastEmi, 1e-9));
+check('onetime emi: revised EMI = EMI on balance over remaining term', near(re1.firstRevisedEmi, CW.emi(re1.rows[11].closing, 8.5, 228), 1e-6));
+check('onetime emi: revised EMI actually charged', near(re1.rows[12].emi, re1.firstRevisedEmi, 1e-6));
+const re2 = CW.amortize({ principal: 5000000, annualRate: 8.5, months: 240, prepay: { type: 'monthly', amount: 5000, startMonth: 1, mode: 'emi' } });
+check('monthly emi: many revisions', re2.emiRevisions > 200, re2.emiRevisions);
+check('monthly emi: first revision > last', re2.firstRevisedEmi > re2.lastEmi && re2.firstRevisedEmi < re2.emi, [re2.firstRevisedEmi, re2.lastEmi]);
+check('monthly emi: first revision is month-2 EMI', near(re2.rows[1].emi, re2.firstRevisedEmi, 1e-6));
+const re3 = CW.amortize({ principal: 5000000, annualRate: 8.5, months: 240, prepay: { type: 'onetime', amount: 500000, startMonth: 12, mode: 'tenure' } });
+check('tenure mode: no revisions', re3.emiRevisions === 0 && near(re3.firstRevisedEmi, re3.emi, 1e-9));
+
+// Validation message is derived from config.
+check('amount range message', CW.validate('amount', '999999999999').error === 'Loan amount must be between ₹10,000 and ₹10,00,00,000 (₹10 crore).', CW.validate('amount', '999999999999').error);
+
 // Log slider round trip covers both ends
 check('slider min', CW.posToAmount(0) === 10000);
 check('slider max', CW.posToAmount(CW.SLIDER_STEPS) === 100000000);

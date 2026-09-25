@@ -55,7 +55,7 @@ const pages = [
     h1: 'About CalcWise',
     description: 'CalcWise is a set of free, browser-based loan calculators for Indian borrowers: EMI, loan prepayment and loan comparison.',
     body: `
-<p>CalcWise is a small set of free loan calculators for Indian borrowers, built by <a href="https://nidspace.com" target="_blank" rel="noopener">NidSpace<span class="sr-only"> (opens in a new tab)</span></a>. It currently includes:</p>
+<p>CalcWise is a small set of free loan calculators for Indian borrowers, built by <a href="https://www.nidspace.com/" target="_blank" rel="noopener">NidSpace<span class="sr-only"> (opens in a new tab)</span></a>. It currently includes:</p>
 <ul>
   <li><a href="/emi-calculator.html">EMI Calculator</a> — monthly EMI, total interest, processing fee with GST, and an amortization schedule by calendar or financial year.</li>
   <li><a href="/prepayment.html">Loan Prepayment Calculator</a> — the effect of one-time, monthly or yearly prepayments on tenure, EMI and interest.</li>
@@ -71,9 +71,9 @@ const pages = [
   {
     file: 'contact.html', eyebrow: 'Contact', title: 'Contact – CalcWise',
     h1: 'Contact',
-    description: 'How to contact the team behind CalcWise.',
+    description: 'Send feedback, bug reports or questions about the CalcWise EMI, prepayment and loan comparison calculators to the NidSpace team.',
     body: `
-<p>CalcWise is a product of NidSpace. For feedback, bug reports or questions about CalcWise, please contact NidSpace through <a href="https://nidspace.com" target="_blank" rel="noopener">nidspace.com<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+<p>CalcWise is a product of NidSpace. For feedback, bug reports or questions about CalcWise, please contact NidSpace through <a href="https://www.nidspace.com/" target="_blank" rel="noopener">nidspace.com<span class="sr-only"> (opens in a new tab)</span></a>.</p>
 <p>If you are reporting a calculation issue, it helps to include the loan amount, interest rate, tenure and any prepayment or fee settings you used — the <strong>Share Link</strong> button on each calculator copies a link that contains exactly these inputs.</p>
 <p>CalcWise cannot help with individual loan applications, lender disputes or personal financial advice. For those, please contact your lender or a qualified professional.</p>`
   },
@@ -122,7 +122,7 @@ ${updated}
   {
     file: 'terms.html', eyebrow: 'Legal', title: 'Terms of Use – CalcWise',
     h1: 'Terms of Use',
-    description: 'Terms for using the free CalcWise loan calculators.',
+    description: 'Terms for using the free CalcWise loan calculators: results are estimates for general information, not financial advice or a loan offer.',
     body: `
 ${updated}
 <p>By using CalcWise you agree to these terms. If you do not agree, please do not use the site.</p>
@@ -140,7 +140,7 @@ ${updated}
   {
     file: '404.html', eyebrow: 'Error 404', title: 'Page not found – CalcWise', noindex: true,
     h1: 'Page not found',
-    description: 'The page you were looking for does not exist.',
+    description: 'The page you were looking for does not exist. Use the CalcWise EMI, prepayment or loan comparison calculators instead.',
     body: `
 <p>Sorry, that page doesn't exist or has moved. Try one of these:</p>
 <ul>

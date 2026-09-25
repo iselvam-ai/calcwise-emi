@@ -186,15 +186,32 @@
     function renderProfiles(a, b) {
       [[a, b, '#profileA', '#profileTitleA'], [b, a, '#profileB', '#profileTitleB']].forEach(function (x) {
         var me = x[0], other = x[1], items = [], priorities = [];
-        if (other.emi - me.emi >= 0.5) { items.push('Lower EMI: ' + fmt(other.emi - me.emi) + ' less per month than ' + other.o.name + '.'); priorities.push('lower monthly payments'); }
+        // With different loan amounts, EMI / interest / fees / total cost mostly reflect the amount
+        // borrowed, so they are shown for information but not presented as a reason to prefer an option.
+        var same = me.P === other.P, note = same ? '' : ' (smaller loan)';
+        function lower(d, text, priority) {
+          if (d < 0.5) return;
+          items.push(text + (same ? '' : note) + '.');
+          if (same && priority) priorities.push(priority);
+        }
+        if (!same) {
+          items.push(me.P < other.P
+            ? 'Borrows ' + fmt(other.P - me.P) + ' less than ' + other.o.name + ', so its EMI, interest and fees are not directly comparable.'
+            : 'Borrows ' + fmt(me.P - other.P) + ' more than ' + other.o.name + ', so its EMI, interest and fees are not directly comparable.');
+        }
+        lower(other.emi - me.emi, 'Lower EMI: ' + fmt(other.emi - me.emi) + ' less per month than ' + other.o.name, 'lower monthly payments');
         if (me.n < other.n) { items.push('Shorter repayment: finishes ' + CW.formatTenure(other.n - me.n) + ' earlier.'); priorities.push('a shorter repayment period'); }
-        if (other.interest - me.interest >= 0.5) items.push('Lower total interest: ' + fmt(other.interest - me.interest) + ' less over the loan.');
-        if (other.total - me.total >= 0.5) { items.push('Lower total cost including fees: ' + fmt(other.total - me.total) + ' less' + (me.P !== other.P ? ' (loan amounts differ).' : '.')); priorities.push('a lower total cost'); }
-        if (other.upfront - me.upfront >= 0.5) { items.push('Lower upfront fees: ' + fmt(other.upfront - me.upfront) + ' less at the start.'); priorities.push('lower upfront fees'); }
-        if (me.emi - other.emi >= 0.5) items.push('Needs ' + fmt(me.emi - other.emi) + ' more per month than ' + other.o.name + ' — check that this fits your budget.');
+        lower(other.interest - me.interest, 'Lower total interest: ' + fmt(other.interest - me.interest) + ' less over the loan');
+        lower(other.total - me.total, 'Lower total cost including fees: ' + fmt(other.total - me.total) + ' less', 'a lower total cost');
+        lower(other.upfront - me.upfront, 'Lower upfront fees: ' + fmt(other.upfront - me.upfront) + ' less at the start', 'lower upfront fees');
+        if (CW.isNum(me.apr) && CW.isNum(other.apr) && other.apr - me.apr >= 0.005) {
+          items.push('Lower effective annual rate including fees: ' + me.apr.toFixed(2) + '% vs ' + other.apr.toFixed(2) + '%.');
+          if (!same) priorities.push('a lower effective annual rate');
+        }
+        if (same && me.emi - other.emi >= 0.5) items.push('Needs ' + fmt(me.emi - other.emi) + ' more per month than ' + other.o.name + ' — check that this fits your budget.');
         CW.setText(x[3], priorities.length
           ? me.o.name + ' may suit borrowers who prioritise ' + joinList(priorities)
-          : me.o.name + ': no lower EMI, cost or tenure on these inputs');
+          : me.o.name + ': not lower on ' + (same ? 'EMI, cost or tenure' : 'effective rate or tenure') + ' on these inputs');
         var ul = $(x[2]);
         ul.textContent = '';
         if (!items.length) items.push('On these inputs, this option is not lower on any measure compared with ' + other.o.name + '.');
@@ -269,6 +286,7 @@
         if ((v = CW.param(p, k + '_fee', 'fee')) !== undefined) o.fee.set(v);
       });
       if (p.get('gst') === '0') gstCheck.checked = false;
+      CW.reportIgnoredParams();
     })();
     render();
   });

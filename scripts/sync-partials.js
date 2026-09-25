@@ -77,8 +77,8 @@ function header(file) {
 ${links}
     </nav>
     <div class="header-end">
-      <a href="https://nidspace.com" class="nidspace-link" target="_blank" rel="noopener">
-        <img src="/assets/img/nidspace-logo.png" width="312" height="80" alt="NidSpace (opens in a new tab)">
+      <a href="https://www.nidspace.com/" class="nidspace-link" target="_blank" rel="noopener">
+        <picture><source srcset="/assets/img/nidspace-logo.webp" type="image/webp"><img src="/assets/img/nidspace-logo.png" width="312" height="80" alt="NidSpace (opens in a new tab)"></picture>
       </a>
       <button type="button" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
         <span class="material-symbols-outlined" aria-hidden="true">menu</span>
@@ -97,7 +97,7 @@ function footer() {
       <div>
         <a href="/" class="brand">Calc<span class="brand__accent">Wise</span></a>
         <p class="font-label-lg text-label-lg font-semibold text-secondary mt-2 mb-space-xs">Calculate. Compare. Plan.</p>
-        <p class="font-body-sm text-body-sm text-on-surface-variant">Free, browser-based loan calculators for Indian borrowers. A financial tools product by <a class="underline hover:text-primary" href="https://nidspace.com" target="_blank" rel="noopener">NidSpace<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Free, browser-based loan calculators for Indian borrowers. A financial tools product by <a class="underline hover:text-primary" href="https://www.nidspace.com/" target="_blank" rel="noopener">NidSpace<span class="sr-only"> (opens in a new tab)</span></a>.</p>
       </div>
       <nav aria-label="Calculators">
         ${h('Calculators')}

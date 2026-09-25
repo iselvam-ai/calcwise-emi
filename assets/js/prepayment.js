@@ -100,9 +100,14 @@
         CW.setText('#statSubline', r.cut > 0
           ? CW.plural(r.cut, 'fewer EMI', 'fewer EMIs') + ' — last EMI in ' + CW.monthLabel(plan.endDate) + ' instead of ' + CW.monthLabel(base.endDate) + '.'
           : 'The prepayment is too small or too late to shorten the loan by a full month.');
+      } else if (plan.emiRevisions === 0) {
+        CW.setText('#statHeadline', r.cut > 0 ? 'Loan closes ' + CW.formatTenure(r.cut) + ' earlier' : 'EMI unchanged');
+        CW.setText('#statSubline', r.cut > 0 ? 'The prepayment clears the remaining balance.' : 'No prepayment falls within the remaining tenure.');
       } else {
-        CW.setText('#statHeadline', 'EMI falls to ' + fmt(plan.lastEmi));
-        CW.setText('#statSubline', 'From ' + fmt(base.emi) + ' today. Tenure stays ' + CW.formatTenure(plan.months) + '; the EMI shown applies after the last prepayment.');
+        CW.setText('#statHeadline', 'EMI falls to ' + fmt(plan.firstRevisedEmi));
+        CW.setText('#statSubline', 'From ' + fmt(base.emi) + ' today, after the first prepayment. ' + (plan.emiRevisions > 1
+          ? 'The EMI is recalculated after each later prepayment and is ' + fmt(plan.lastEmi) + ' after the last one. '
+          : '') + 'The loan still ends in ' + CW.monthLabel(plan.endDate) + '.');
       }
       CW.setText('#statInterestSavedHero', fmt(r.saved));
       CW.setText('#statNewTenure', CW.formatTenure(plan.months));
@@ -114,8 +119,9 @@
       CW.setText('#statOldOutflow', fmt(base.totalPaid));
       CW.setText('#statOldPayoff', CW.monthLabel(base.endDate));
       CW.setText('#statOptimizedTenure', CW.formatTenure(plan.months) + ' (' + plan.months + ' EMIs)');
-      CW.setText('#newEmiLabel', mode === 'tenure' ? 'EMI (unchanged)' : 'EMI after last prepayment');
-      CW.setText('#statNewEmi', fmt(mode === 'tenure' ? base.emi : plan.lastEmi));
+      var revised = mode === 'emi' && plan.emiRevisions > 0;
+      CW.setText('#newEmiLabel', revised ? 'EMI after first prepayment' : 'EMI (unchanged)');
+      CW.setText('#statNewEmi', fmt(revised ? plan.firstRevisedEmi : base.emi));
       CW.setText('#statOptimizedInterest', fmt(plan.totalInterest));
       CW.setText('#statOptimizedOutflow', fmt(plan.totalPaid));
       CW.setText('#statOptimizedPayoff', CW.monthLabel(plan.endDate));
@@ -129,10 +135,11 @@
 
       CW.setText('#metricSaved', fmt(r.saved));
       CW.setText('#metricTenureCut', CW.plural(r.cut, 'month', 'months'));
-      CW.setText('#metricTenureCutNote', mode === 'tenure' ? (r.cut >= 12 ? CW.formatTenure(r.cut) + ' fewer EMIs' : 'Fewer EMIs to pay') : 'Tenure is unchanged in "reduce EMI" mode');
-      CW.setText('#metricEmiLabel', mode === 'tenure' ? 'Monthly EMI' : 'EMI after last prepayment');
-      CW.setText('#metricEmi', fmt(mode === 'tenure' ? base.emi : plan.lastEmi));
-      CW.setText('#metricEmiNote', mode === 'tenure' ? 'Unchanged — the loan finishes sooner' : 'Down from ' + fmt(base.emi));
+      CW.setText('#metricTenureCutNote', mode === 'tenure' || r.cut > 0 ? (r.cut >= 12 ? CW.formatTenure(r.cut) + ' fewer EMIs' : 'Fewer EMIs to pay') : 'Tenure is unchanged in "reduce EMI" mode');
+      CW.setText('#metricEmiLabel', revised ? 'EMI after first prepayment' : 'Monthly EMI');
+      CW.setText('#metricEmi', fmt(revised ? plan.firstRevisedEmi : base.emi));
+      CW.setText('#metricEmiNote', !revised ? 'Unchanged — the loan finishes sooner'
+        : 'Down from ' + fmt(base.emi) + (plan.emiRevisions > 1 ? '; ' + fmt(plan.lastEmi) + ' after the last prepayment' : ''));
 
       var firstPrepay = null;
       for (var i = 0; i < plan.rows.length; i++) if (plan.rows[i].prepayment > 0) { firstPrepay = plan.rows[i]; break; }
@@ -196,7 +203,9 @@
             rows: [
               ['Number of EMIs', String(base.months), String(plan.months)],
               ['Last EMI', CW.monthLabel(base.endDate), CW.monthLabel(plan.endDate)],
-              ['EMI', fmt(base.emi), fmt(mode === 'tenure' ? base.emi : plan.lastEmi) + (mode === 'emi' ? ' (after last prepayment)' : '')],
+              ['EMI', fmt(base.emi), mode === 'emi' && plan.emiRevisions > 0
+                ? fmt(plan.firstRevisedEmi) + ' after first prepayment' + (plan.emiRevisions > 1 ? '; ' + fmt(plan.lastEmi) + ' after last' : '')
+                : fmt(base.emi)],
               ['Total interest', fmt(base.totalInterest), fmt(plan.totalInterest)],
               ['Total prepaid', fmt(0), fmt(plan.totalPrepaid)],
               ['Total payments', fmt(base.totalPaid), fmt(plan.totalPaid)]
@@ -247,15 +256,19 @@
       if ((v = CW.param(p, 'amount', 'amount')) !== undefined) principal.set(v);
       if ((v = CW.param(p, 'rate', 'rate')) !== undefined) rate.set(v);
       var unit = p.get('unit') === 'months' ? 'months' : 'years';
+      if (p.has('unit') && ['years', 'months'].indexOf(p.get('unit')) < 0) CW.ignoreParam('unit');
       if ((v = CW.param(p, 'tenure', unit)) !== undefined) {
         if (unit === 'years') tenure.setMonths(v * 12);
         else { tenure.setUnit('months', false); tenure.field.set(v); }
       }
       var s = p.get('ptype');
       if (Object.prototype.hasOwnProperty.call(STRATEGIES, s)) strategyGroup.select(s, true);
+      else if (p.has('ptype')) CW.ignoreParam('ptype');
       if ((v = CW.param(p, 'pamt', 'prepay')) !== undefined) prepay.set(v);
       if ((v = CW.param(p, 'pmonth', 'month')) !== undefined) timing.set(v);
       if (p.get('pmode') === 'emi') modeGroup.select('emi', false);
+      else if (p.has('pmode') && p.get('pmode') !== 'tenure') CW.ignoreParam('pmode');
+      CW.reportIgnoredParams();
     })();
     render();
   });
