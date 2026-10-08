@@ -5,7 +5,7 @@
 /* ------------------------------------------------------------------
  * CalcWise site styles (kept outside @layer so they are never purged)
  * ------------------------------------------------------------------ */
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; zoom: 0.9; }
 body { overscroll-behavior-y: none; }
 :focus-visible { outline: 2px solid #0051d5; outline-offset: 2px; }
 input[type="range"] { accent-color: #0051d5; }
