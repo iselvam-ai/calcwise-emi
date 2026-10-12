@@ -322,6 +322,59 @@ ${updated}
 <p>This guide gives general information only. Fee structures and GST treatment depend on the lender and the applicable tax rules. Check your loan documents or ask a tax professional. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
   },
   {
+    file: 'flat-rate-vs-reducing-balance.html', eyebrow: 'Guide', title: 'Flat Rate vs Reducing Balance Loan – Why the Rate Looks Lower',
+    h1: 'Flat rate vs reducing balance',
+    description: 'Why a flat interest rate on a loan looks lower than it is, how it compares with a reducing-balance rate, and a worked example.',
+    body: `
+${updated}
+<p>Some lenders quote a <strong>flat rate</strong>, calculated on the original loan amount for the whole tenure. Most home and bank loans use a <strong>reducing-balance rate</strong>, calculated on the amount still outstanding each month. The two numbers are not comparable as quoted.</p>
+<h2>Worked example</h2>
+<p>Take a ₹10,00,000 loan for 10 years:</p>
+<ul>
+  <li><strong>Flat rate of 8%:</strong> interest is ₹10,00,000 × 8% × 10 years = ₹8,00,000. Total repayment is ₹18,00,000, so the EMI is about <strong>₹15,000</strong>.</li>
+  <li><strong>Reducing balance of 8%:</strong> the EMI is about ₹12,133, and total interest is about ₹4,55,931.</li>
+  <li><strong>Equivalent reducing rate:</strong> the flat 8% loan costs about the same as a reducing-balance loan at about <strong>13.1%</strong>.</li>
+</ul>
+<p>The flat-rate offer looks like 8%, but it is closer to 13% in reducing-balance terms, and it costs about ₹3.4 lakh more in interest in this example.</p>
+<h2>How to check an offer</h2>
+<ul>
+  <li>Ask whether the rate is flat or reducing balance, and ask for the rate on a reducing-balance basis.</li>
+  <li>Compare the EMI and total repayment for the same amount and tenure, not just the rate.</li>
+  <li>Use the <a href="/loan-comparison.html">Loan Comparison Calculator</a> to compare two offers on the same basis, and the <a href="/emi-calculator.html">EMI Calculator</a> to check the reducing-balance EMI.</li>
+</ul>
+<h2>Note</h2>
+<p>The examples use the standard formulas for illustration. Lender terms, fees and rounding vary. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
+  },
+  {
+    file: 'loan-foreclosure-checklist.html', eyebrow: 'Guide', title: 'Loan Foreclosure Checklist – Closing a Loan Properly',
+    h1: 'Loan foreclosure checklist',
+    description: 'A practical checklist for closing a loan early: charges, the outstanding amount, closure documents, and the steps after the final payment.',
+    body: `
+${updated}
+<p>Foreclosure means paying off the full outstanding loan before its scheduled end date. It can save a lot of interest, but a few details decide whether the saving is real and whether the loan closes cleanly.</p>
+<h2>Before you pay</h2>
+<ul>
+  <li><strong>Check for foreclosure charges.</strong> Ask whether a charge applies, what percentage it is, and whether GST is added. Some loans, especially floating-rate loans, may have no charge.</li>
+  <li><strong>Get the exact outstanding amount in writing.</strong> Ask for a foreclosure statement that shows principal, interest to the closing date, and any charges.</li>
+  <li><strong>Calculate the saving.</strong> Compare the remaining interest with the amount you will pay, using the <a href="/prepayment.html">Prepayment Calculator</a> to see how much interest you avoid.</li>
+  <li><strong>Keep an emergency fund.</strong> Make sure you still have savings after the payment.</li>
+</ul>
+<h2>When you pay</h2>
+<ul>
+  <li>Pay by a traceable method, and keep the receipt or transaction reference.</li>
+  <li>Ask the lender to confirm the loan is closed and to state the date.</li>
+</ul>
+<h2>After the final payment</h2>
+<ul>
+  <li><strong>Get the closure documents.</strong> For secured loans, ask for a no-dues or no-objection letter and the return of original documents, such as property papers or vehicle registration.</li>
+  <li><strong>Stop auto-debits.</strong> Cancel any standing instruction or ECS mandate so no further payments are taken.</li>
+  <li><strong>Check the insurance.</strong> If the loan was linked to an insurance policy, ask whether it should be cancelled or transferred.</li>
+  <li><strong>Check your credit report</strong> a few weeks later to confirm the loan shows as closed.</li>
+</ul>
+<h2>Note</h2>
+<p>This checklist is general information, not advice for your loan. The terms in your loan agreement and your lender's process apply. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
+  },
+  {
     file: '404.html', eyebrow: 'Error 404', title: 'Page not found – CalcWise', noindex: true,
     h1: 'Page not found',
     description: 'The page you were looking for does not exist. Use the CalcWise EMI, prepayment or loan comparison calculators instead.',
