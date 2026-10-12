@@ -113,6 +113,9 @@ function footer() {
           ${li('/how-emi-is-calculated.html', 'How EMI is calculated')}
           ${li('/home-loan-vs-personal-loan.html', 'Home loan vs personal loan')}
           ${li('/what-is-effective-annual-rate.html', 'Effective annual rate')}
+          ${li('/loan-prepayment-tenure-or-emi.html', 'Prepayment: tenure or EMI')}
+          ${li('/loan-tenure-explained.html', 'Loan tenure explained')}
+          ${li('/loan-processing-fees-explained.html', 'Processing fees and GST')}
         </ul>
       </nav>
       <nav aria-label="About CalcWise">

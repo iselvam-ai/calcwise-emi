@@ -224,6 +224,97 @@ ${updated}
 <p>The effective annual rate in CalcWise is a calculation for comparison, based on the fee and GST you enter. It may differ from the figure your lender quotes if they include other charges. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
   },
   {
+    file: 'loan-prepayment-tenure-or-emi.html', eyebrow: 'Guide', title: 'Loan Prepayment: Reduce Tenure or EMI? – Worked Example',
+    h1: 'Loan prepayment: reduce tenure or EMI?',
+    description: 'When you prepay a loan, you can shorten the tenure or lower the EMI. See a worked example of how each choice changes the total interest.',
+    body: `
+${updated}
+<p>A prepayment is an extra payment towards your loan principal, on top of the regular EMI. Most lenders ask you to choose what it should reduce: the remaining tenure, or the monthly EMI. The choice changes how much interest you save.</p>
+<h2>The two options</h2>
+<ul>
+  <li><strong>Reduce tenure.</strong> Your EMI stays the same and the loan ends sooner. This usually saves the most total interest.</li>
+  <li><strong>Reduce EMI.</strong> The loan keeps its original end date, but the monthly EMI falls. This helps if your cash flow is tight.</li>
+</ul>
+<h2>Worked example</h2>
+<p>Take the ₹10,00,000 loan at 8.5% for 10 years from the <a href="/how-emi-is-calculated.html">EMI guide</a>, with an EMI of about ₹12,399 and total interest of about ₹4,87,828. You make a one-time prepayment of ₹1,00,000 at the end of month 12:</p>
+<ul>
+  <li><strong>Reduce tenure:</strong> the EMI stays at about ₹12,399. The loan closes after about 104 months instead of 120, and total interest falls to about ₹3,84,942, a saving of about ₹1,02,886.</li>
+  <li><strong>Reduce EMI:</strong> the EMI falls to about ₹11,071. The loan still runs 120 months, and total interest falls to about ₹4,44,411, a saving of about ₹43,417.</li>
+</ul>
+<p>In this example, reducing the tenure saves more than twice as much interest, because the same EMI keeps clearing principal faster.</p>
+<h2>When reducing the EMI makes sense</h2>
+<p>If the lower EMI protects your monthly budget, it can be worth the smaller saving. It also lets you keep the flexibility to prepay again later without committing to a shorter loan.</p>
+<h2>Check before you prepay</h2>
+<ul>
+  <li>Ask whether your loan has a prepayment or foreclosure charge, and when it applies.</li>
+  <li>Confirm the minimum prepayment amount and whether it is applied to principal first.</li>
+  <li>Keep the emergency fund you need before putting money into the loan.</li>
+</ul>
+<h2>Try it yourself</h2>
+<p>Use the <a href="/prepayment.html">Prepayment Calculator</a> to compare tenure and EMI reduction for your own loan, including monthly and yearly prepayments.</p>
+<h2>Note</h2>
+<p>This example is for illustration only. Your lender's rules, charges and rounding may differ. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
+  },
+  {
+    file: 'loan-tenure-explained.html', eyebrow: 'Guide', title: 'Loan Tenure: Shorter or Longer? – Worked Example',
+    h1: 'Loan tenure: shorter or longer?',
+    description: 'How the loan tenure changes the EMI and total interest, with a worked example for a ₹10 lakh loan at 8.5% over 5, 10, 15 and 20 years.',
+    body: `
+${updated}
+<p>The tenure is the number of years you take to repay a loan. A longer tenure lowers the EMI, but it also means you pay interest for longer. A shorter tenure does the opposite.</p>
+<h2>Worked example</h2>
+<p>Here is a ₹10,00,000 loan at 8.5% a year, with different tenures:</p>
+<ul>
+  <li><strong>5 years:</strong> EMI about ₹20,517. Total interest about ₹2,30,992.</li>
+  <li><strong>10 years:</strong> EMI about ₹12,399. Total interest about ₹4,87,828.</li>
+  <li><strong>15 years:</strong> EMI about ₹9,847. Total interest about ₹7,72,531.</li>
+  <li><strong>20 years:</strong> EMI about ₹8,678. Total interest about ₹10,82,776.</li>
+</ul>
+<p>Going from 5 to 20 years cuts the EMI by more than half, but the total interest is more than four times higher. The lower EMI is affordable only because you pay for longer.</p>
+<h2>How to choose a tenure</h2>
+<ul>
+  <li><strong>Pick the shortest tenure you can comfortably afford.</strong> Test whether the EMI still leaves room for savings and emergencies.</li>
+  <li><strong>Avoid stretching the tenure just to fit a higher loan amount.</strong> A longer loan can look affordable while costing much more overall.</li>
+  <li><strong>Remember that you can prepay later.</strong> Choosing a longer tenure gives flexibility, but you can shorten the loan with prepayments if your income grows. Check for prepayment charges first.</li>
+</ul>
+<h2>Try different tenures</h2>
+<p>Use the <a href="/emi-calculator.html">EMI Calculator</a> to compare tenures for your own amount and rate, and the <a href="/loan-comparison.html">Loan Comparison Calculator</a> to compare two offers with different tenures side by side.</p>
+<h2>Note</h2>
+<p>These figures use the standard reducing-balance formula and are for illustration only. Lender EMIs can differ because of fees, rounding or rate changes. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
+  },
+  {
+    file: 'loan-processing-fees-explained.html', eyebrow: 'Guide', title: 'Loan Processing Fees and GST – How They Change the Cost',
+    h1: 'Loan processing fees and GST',
+    description: 'How loan processing fees and the 18% GST on them change the amount you receive and the true cost of a loan, with worked examples.',
+    body: `
+${updated}
+<p>Most loans charge a processing fee, usually as a percentage of the loan amount. GST is charged on top of that fee. Both reduce the amount you actually receive, while your EMI is still based on the full loan amount.</p>
+<h2>How the fee is calculated</h2>
+<ul>
+  <li><strong>Fee:</strong> a percentage of the loan amount, often deducted from the disbursed amount.</li>
+  <li><strong>GST:</strong> 18% of the fee in most cases, so the total deduction is the fee × 1.18.</li>
+</ul>
+<h2>Worked examples on a ₹10,00,000 loan at 8.5%</h2>
+<ul>
+  <li><strong>No fee:</strong> you receive ₹10,00,000. The effective annual rate is 8.50%.</li>
+  <li><strong>1% fee:</strong> the fee is ₹10,000 and the GST is ₹1,800, so you receive ₹9,88,200. The effective annual rate is about 8.78%.</li>
+  <li><strong>2% fee:</strong> the fee is ₹20,000 and the GST is ₹3,600, so you receive ₹9,76,400. The effective annual rate is about 9.06%.</li>
+</ul>
+<h2>Comparing offers fairly</h2>
+<p>A loan with a lower stated rate but a higher fee can cost more than one with a slightly higher rate and no fee. For example, a 9% loan with no fee has an effective annual rate of 9.00%, which is lower than the 9.06% effective rate of the 8.5% loan with a 2% fee. The fee-free offer is the cheaper one here.</p>
+<p>Always compare the effective annual rate, not just the stated rate. The <a href="/what-is-effective-annual-rate.html">effective annual rate guide</a> explains the method in more detail.</p>
+<h2>Questions to ask the lender</h2>
+<ul>
+  <li>Is the processing fee a fixed amount or a percentage, and is there a cap?</li>
+  <li>Is the fee deducted from the loan, or do I pay it separately?</li>
+  <li>Are there other charges, such as documentation, valuation or insurance?</li>
+</ul>
+<h2>Compare with the calculators</h2>
+<p>Enter both offers into the <a href="/loan-comparison.html">Loan Comparison Calculator</a>. It shows each EMI, total interest, fee with GST, total cost and effective annual rate.</p>
+<h2>Note</h2>
+<p>This guide gives general information only. Fee structures and GST treatment depend on the lender and the applicable tax rules. Check your loan documents or ask a tax professional. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
+  },
+  {
     file: '404.html', eyebrow: 'Error 404', title: 'Page not found – CalcWise', noindex: true,
     h1: 'Page not found',
     description: 'The page you were looking for does not exist. Use the CalcWise EMI, prepayment or loan comparison calculators instead.',
