@@ -116,6 +116,8 @@ function footer() {
           ${li('/loan-prepayment-tenure-or-emi.html', 'Prepayment: tenure or EMI')}
           ${li('/loan-tenure-explained.html', 'Loan tenure explained')}
           ${li('/loan-processing-fees-explained.html', 'Processing fees and GST')}
+          ${li('/flat-rate-vs-reducing-balance.html', 'Flat rate vs reducing balance')}
+          ${li('/loan-foreclosure-checklist.html', 'Foreclosure checklist')}
         </ul>
       </nav>
       <nav aria-label="About CalcWise">
