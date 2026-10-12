@@ -1,6 +1,6 @@
 # CalcWise
 
-Free, browser-based loan calculators for Indian borrowers — **EMI**, **loan prepayment** and **loan comparison** — deployed as a static site on Vercel (<https://calcwise-emi.vercel.app>). All calculations run client-side; there is no backend, no API, no analytics and no storage of user inputs.
+Free, browser-based loan calculators for Indian borrowers — **EMI**, **loan prepayment** and **loan comparison** — deployed as a static site on Vercel (<https://emi.nidspace.com>). All calculations run client-side; there is no backend, no API, no analytics and no storage of user inputs.
 
 ## Structure
 

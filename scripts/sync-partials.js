@@ -15,7 +15,7 @@ const path = require('path');
 const crypto = require('crypto');
 
 const ROOT = path.resolve(__dirname, '..');
-const SITE = 'https://calcwise-emi.vercel.app';
+const SITE = 'https://emi.nidspace.com';
 const pages = fs.readdirSync(ROOT).filter(f => f.endsWith('.html'));
 
 const NAV = [
@@ -105,6 +105,14 @@ function footer() {
           ${li('/emi-calculator.html', 'EMI Calculator')}
           ${li('/prepayment.html', 'Prepayment Calculator')}
           ${li('/loan-comparison.html', 'Loan Comparison')}
+        </ul>
+      </nav>
+      <nav aria-label="Guides">
+        ${h('Guides')}
+        <ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
+          ${li('/how-emi-is-calculated.html', 'How EMI is calculated')}
+          ${li('/home-loan-vs-personal-loan.html', 'Home loan vs personal loan')}
+          ${li('/what-is-effective-annual-rate.html', 'Effective annual rate')}
         </ul>
       </nav>
       <nav aria-label="About CalcWise">

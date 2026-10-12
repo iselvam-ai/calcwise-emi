@@ -12,7 +12,7 @@
    * Configuration (see README.md → "Validation ranges" for rationale)
    * ------------------------------------------------------------------ */
   var CONFIG = {
-    siteUrl: 'https://calcwise-emi.vercel.app',
+    siteUrl: 'https://emi.nidspace.com',
     limits: {
       amount: { min: 10000, max: 100000000 }, // ₹10,000 – ₹10 crore
       rate: { min: 1, max: 30 },               // % per annum
