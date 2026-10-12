@@ -5,7 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
-const SITE = 'https://calcwise-emi.vercel.app';
+const SITE = 'https://emi.nidspace.com';
 const UPDATED = '25 September 2026';
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -136,6 +136,92 @@ ${updated}
 <p>To the extent permitted by law, NidSpace is not liable for any loss arising from reliance on the calculations or information on CalcWise.</p>
 <h2>Changes to these terms</h2>
 <p>These terms may be updated from time to time. The date above shows when they were last changed.</p>`
+  },
+  {
+    file: 'how-emi-is-calculated.html', eyebrow: 'Guide', title: 'How EMI Is Calculated – Formula and Worked Example',
+    h1: 'How EMI is calculated',
+    description: 'The EMI formula explained step by step with a worked example: how the monthly rate, tenure and principal combine, and why early EMIs are mostly interest.',
+    body: `
+${updated}
+<p>An equated monthly instalment (EMI) is the fixed amount you pay each month to repay a loan. Each payment covers the interest for that month and the rest reduces the principal. The EMI stays the same for the whole tenure on a fixed-rate reducing-balance loan.</p>
+<h2>The formula</h2>
+<p>EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</p>
+<ul>
+  <li><strong>P</strong> is the loan amount (principal).</li>
+  <li><strong>r</strong> is the monthly interest rate: the annual rate ÷ 12 ÷ 100. For 8.5% a year, r = 0.085 ÷ 12 ≈ 0.0070833.</li>
+  <li><strong>n</strong> is the number of monthly instalments. For 10 years, n = 120.</li>
+</ul>
+<h2>Worked example</h2>
+<p>Take a ₹10,00,000 loan at 8.5% a year for 10 years (120 months):</p>
+<ul>
+  <li>Monthly EMI: about <strong>₹12,399</strong></li>
+  <li>Total paid over 120 months: about ₹14,87,828</li>
+  <li>Total interest: about <strong>₹4,87,828</strong></li>
+  <li>First EMI: about ₹7,083 interest and ₹5,315 principal</li>
+  <li>Last EMI: about ₹87 interest and ₹12,311 principal</li>
+</ul>
+<p>The first instalment is mostly interest because interest is charged on the full outstanding balance. As the balance falls, each instalment pays off more principal. This is why prepaying early saves more interest than prepaying near the end.</p>
+<h2>What changes the EMI</h2>
+<ul>
+  <li><strong>A higher rate</strong> raises the EMI and the total interest.</li>
+  <li><strong>A longer tenure</strong> lowers the EMI but raises the total interest, because the balance stays outstanding for longer.</li>
+  <li><strong>A larger loan</strong> raises the EMI in proportion.</li>
+</ul>
+<h2>Try your own numbers</h2>
+<p>Use the <a href="/emi-calculator.html">EMI Calculator</a> to see the monthly EMI, total interest and a year-wise schedule. To see how a lump-sum payment changes the result, try the <a href="/prepayment.html">Prepayment Calculator</a>.</p>
+<h2>Note</h2>
+<p>This is an illustration of the standard formula. Your lender's EMI may differ because of processing fees, rounding, rate resets or a different calculation method. Check the figures in your loan agreement. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
+  },
+  {
+    file: 'home-loan-vs-personal-loan.html', eyebrow: 'Guide', title: 'Home Loan vs Personal Loan – Key Differences in India',
+    h1: 'Home loan vs personal loan',
+    description: 'Compare a home loan with a personal loan in India: security, interest rates, tenure, fees and tax treatment, and how to compare offers with the EMI calculator.',
+    body: `
+${updated}
+<p>A home loan and a personal loan both give you a lump sum that you repay in monthly instalments, but they are built differently. The right one depends on what you are borrowing for and what you can offer as security.</p>
+<h2>Main differences</h2>
+<ul>
+  <li><strong>Security.</strong> A home loan is secured against the property you buy. A personal loan is usually unsecured, so the lender relies on your income and credit history.</li>
+  <li><strong>Interest rates.</strong> Because a home loan is secured, its rate is usually lower than a personal loan's rate for the same borrower.</li>
+  <li><strong>Tenure.</strong> Home loans can run for up to 30 years in India. Personal loans are usually much shorter, often a few years.</li>
+  <li><strong>Fees.</strong> Both can carry a processing fee, plus GST on that fee. Compare the total cost, not just the rate.</li>
+  <li><strong>Tax treatment.</strong> Interest on a home loan may qualify for deductions under the Income Tax Act, subject to conditions and the tax regime you choose. Interest on a personal loan used for personal expenses generally does not. Check with a tax professional.</li>
+</ul>
+<h2>Compare with the same tools</h2>
+<p>Enter both offers into the <a href="/loan-comparison.html">Loan Comparison Calculator</a>. It shows each EMI, total interest, processing fee with GST, total cost and the effective annual rate, which is the true cost once fees are included.</p>
+<p>A shorter tenure on a personal loan can produce a higher EMI with less total interest, even at a higher rate. The <a href="/emi-calculator.html">EMI Calculator</a> lets you test different tenures on the same amount.</p>
+<h2>Questions to ask the lender</h2>
+<ul>
+  <li>What is the annual rate, and is it fixed or floating?</li>
+  <li>What is the processing fee, and what is the GST on it?</li>
+  <li>Are there prepayment or foreclosure charges?</li>
+  <li>What is the total amount payable over the full tenure?</li>
+</ul>
+<h2>Note</h2>
+<p>This guide gives general information only. It is not a recommendation to take any loan. Lender terms, eligibility and tax rules vary. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
+  },
+  {
+    file: 'what-is-effective-annual-rate.html', eyebrow: 'Guide', title: 'What Is Effective Annual Rate on a Loan? – Worked Example',
+    h1: 'What is the effective annual rate?',
+    description: 'Learn why a loan\'s effective annual rate can be higher than the stated interest rate once processing fees and GST are included, with a worked example.',
+    body: `
+${updated}
+<p>The stated interest rate is only part of what a loan costs. Processing fees and GST on those fees reduce the amount you actually receive, while you still repay the full EMI. The effective annual rate is the rate that reflects that gap.</p>
+<h2>Worked example</h2>
+<p>Take a ₹10,00,000 loan at 8.5% a year for 10 years, with a 2% processing fee and 18% GST on the fee:</p>
+<ul>
+  <li>Processing fee: 2% of ₹10,00,000 = ₹20,000</li>
+  <li>GST on the fee: 18% of ₹20,000 = ₹3,600</li>
+  <li>Amount you actually receive: ₹10,00,000 − ₹23,600 = <strong>₹9,76,400</strong></li>
+  <li>EMI: still about ₹12,399 a month, because it is based on the full ₹10,00,000 at 8.5%</li>
+</ul>
+<p>You repay as if you borrowed ₹10,00,000, but receive ₹9,76,400. Solving for the rate that makes the same EMI pay off ₹9,76,400 gives an effective annual rate of about <strong>9.06%</strong>, higher than the stated 8.5%.</p>
+<h2>Why it matters</h2>
+<p>Two loans with the same stated rate can cost different amounts once fees are added. A loan with a lower rate but a high fee can end up more expensive than one with a slightly higher rate and no fee. Comparing the effective annual rate puts both offers on the same basis.</p>
+<h2>Calculate it yourself</h2>
+<p>Enter the fee, the GST and both rates into the <a href="/loan-comparison.html">Loan Comparison Calculator</a>. It shows the effective annual rate for each offer, alongside the EMI and total cost.</p>
+<h2>Note</h2>
+<p>The effective annual rate in CalcWise is a calculation for comparison, based on the fee and GST you enter. It may differ from the figure your lender quotes if they include other charges. See the <a href="/disclaimer.html">Disclaimer</a>.</p>`
   },
   {
     file: '404.html', eyebrow: 'Error 404', title: 'Page not found – CalcWise', noindex: true,
