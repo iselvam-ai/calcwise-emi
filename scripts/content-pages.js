@@ -7,6 +7,12 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const SITE = 'https://emi.nidspace.com';
 const UPDATED = '25 September 2026';
+// Set to true only when Google AdSense code is live. Controls the privacy policy wording.
+const ADS_ENABLED = false;
+const adsSection = `<h2>Advertising</h2>
+<p>CalcWise shows ads served by Google AdSense. Google and its partners use cookies and similar technologies to show ads based on your previous visits to this and other websites.</p>
+<p>Your calculator inputs are not sent to Google or to any CalcWise server by the calculators. Ads and their cookies are separate from the calculations.</p>
+<p>You can opt out of personalised advertising at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>, or read how Google uses data at <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com</a>. Where consent rules apply to your region, you may see a consent prompt before ads load.</p>`;
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -114,6 +120,7 @@ ${updated}
   <li><strong>Hosting:</strong> the site is hosted on Vercel. Like any web host, Vercel processes technical request data (such as IP address, browser type and requested page) to deliver the site and keep it secure.</li>
   <li><strong>Fonts:</strong> fonts and icons are loaded from Google Fonts (fonts.googleapis.com and fonts.gstatic.com). Your browser connects to Google to download them, which shares your IP address and browser information with Google.</li>
 </ul>
+${ADS_ENABLED ? adsSection : ''}
 <h2>Changes</h2>
 <p>If this policy changes, the updated version will be posted on this page with a new date.</p>
 <h2>Contact</h2>
